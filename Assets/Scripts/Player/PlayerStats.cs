@@ -2,24 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class PlayerStats : MonoBehaviour {
 
-    [SerializeField]
-    private int health = 5;
+    private int Health = 4;
 
-    private Text healthBar;
-    private int nextXPosition = 0;
 	// Use this for initialization
-	void Start ()
-    {
-        healthBar = GameObject.FindGameObjectWithTag("HUD_Health").GetComponent<Text>();
-    }
+	void Start () { }
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (health == 0)
+		if (Health == 0)
         {
             var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
             player.isPlayerDead = true;
@@ -30,20 +25,28 @@ public class PlayerStats : MonoBehaviour {
             var screenFader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>();
             StartCoroutine(screenFader.FadeToBlack());
         }
-
-        UpdateHealthText();
-
-
     }
 
     public void ManageHealth(int health)
     {
-        this.health += health;
+        if (health < 0)
+        {
+            GetHealthImage(Health, false);
+            Health += health;
+        } 
+        else if (health > 0 && Health < 4)
+        {
+            Health += health;
+            GetHealthImage(Health, true);
+
+        }   
     }
 
-    private void UpdateHealthText()
+    private void GetHealthImage(int health, bool isEnabled)
     {
-        healthBar.text = "Health: " + health;
+        var path = "Health" + Health;
+        var healthHUD = GameObject.Find(path).GetComponent<Image>();
+        healthHUD.enabled = isEnabled;
     }
 
 }

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ReadSign : MonoBehaviour {
 
     private Image buttonImage;
-    private TextMesh displayText;
+    private TextMesh[] displayText = new TextMesh[2];
     [TextArea]
     public string signText = string.Empty;
 
@@ -29,7 +29,8 @@ public class ReadSign : MonoBehaviour {
         announcer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>(); //Helper.GetObject<Text>("Announcer");
 
         buttonImage = GameObject.FindGameObjectWithTag("Player_Buttons").GetComponent<Image>(); //Helper.GetObject<Image>("Player Button Image");
-        displayText = GameObject.FindGameObjectWithTag("Player_Answer").GetComponent<TextMesh>(); //Helper.GetObject<TextMesh>("Player's answer");
+        displayText[0] = GameObject.FindGameObjectsWithTag("Player_Answer")[0].GetComponent<TextMesh>(); //Helper.GetObject<TextMesh>("Player's answer");
+        displayText[1] = GameObject.FindGameObjectsWithTag("Player_Answer")[1].GetComponent<TextMesh>();
 
         announcerAudio = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<AudioSource>(); //Helper.GetObject<AudioSource>("Announcer");
 
@@ -56,7 +57,7 @@ public class ReadSign : MonoBehaviour {
         if (displayText != null)
         {
             signText = signText.Replace("<br>", "\n");
-            displayText.text = signText;
+            displayText[0].text = displayText[1].text = signText;
         }
     }
 
@@ -149,7 +150,7 @@ public class ReadSign : MonoBehaviour {
 
         if (displayText != null)
         {
-            displayText.text = string.Empty;
+            displayText[0].text = displayText[1].text = string.Empty;
         }
 
         isPlayerNearSign = false;

@@ -36,11 +36,13 @@ public class PlayerMovement : MonoBehaviour {
             {
                 anim.SetBool("isWalking", false);
             }
-
-            //Debug.Log(movmentVector.x + "||" + movmentVector.y);
-
+            
             FootStepsSound();
             rBody.MovePosition(rBody.position + movmentVector * Time.deltaTime);
+        }
+        else
+        {
+            anim.SetBool("isWalking", false);
         }
 
 
