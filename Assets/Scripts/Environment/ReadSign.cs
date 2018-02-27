@@ -114,7 +114,6 @@ public class ReadSign : MonoBehaviour {
 
                 if (sound != null)
                 {
-                    Debug.Log(path);
                     announcerAudio.clip = sound;
                     announcerAudio.Play();
                 }

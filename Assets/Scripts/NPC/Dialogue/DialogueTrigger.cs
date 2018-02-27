@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DialogueTrigger : MonoBehaviour {
 
     public Dialogue dialogue;
-    public TextMesh answerBox;
+    public TextMesh[] answerBox;
 
     public SpriteRenderer image;
 

@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour {
     private Queue<string> sentences;
     private bool isDialogueInProcess = false;
     private Image playerButton;
-    private TextMesh textMesh;
+    private TextMesh[] textMesh = new TextMesh[2];
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +34,7 @@ public class DialogueManager : MonoBehaviour {
         }
     }
 
-    public void StartDialogue(Dialogue dialogue, TextMesh textMesh)
+    public void StartDialogue(Dialogue dialogue, TextMesh[] textMesh)
     {
         Debug.Log("Starting conversation with + " + dialogue.name);
 
@@ -68,21 +68,21 @@ public class DialogueManager : MonoBehaviour {
 
     private IEnumerator TypeSentence(string sentence)
     {
-        textMesh.text = "";
+        textMesh[0].text = textMesh[1].text = string.Empty;
 
         foreach (var letter in sentence.ToCharArray())
         {
-            textMesh.text += letter;
+            textMesh[0].text = textMesh[1].text += letter;
             yield return new WaitForSeconds(0.05f);
         }
     }
 
-    public void EndDialogue(TextMesh textMesh)
+    public void EndDialogue(TextMesh[] textMesh)
     {
         isDialogueInProcess = false;
         playerButton.enabled = false;
 
-        textMesh.text = string.Empty;
+        textMesh[0].text = textMesh[1].text = string.Empty;
     }
 
 }
