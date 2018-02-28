@@ -330,6 +330,7 @@
     <None Include="Assets\Tiled2Unity\Imported\CastleEntrance.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\CastleInside.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\HomeOutside.tiled2unity.xml" />
+    <None Include="Assets\Tiled2Unity\Imported\Port.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\StartingMap.tiled2unity.xml" />
     <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
     <None Include="Assets\Tiled2Unity\Imported\home.tiled2unity.xml" />

@@ -12,29 +12,29 @@ public class ReadSign : MonoBehaviour {
 
     public SpriteRenderer image = null;
 
-    private Text objectives;
+    private TaskManagement taskManagement;
     public string task = string.Empty;
 
     private Text announcer;
-    private AudioSource announcerAudio;
 
     private bool isPlayerNearSign = false;
 
     public AudioSource audio = null;
     private bool isPlayed = false;
 
+    private static bool isNextTriggerTriggered = false;
+
     private void Start()
     {
-        objectives = GameObject.FindGameObjectWithTag("HUD_Objectives").GetComponent<Text>();
+        taskManagement = GameObject.FindObjectOfType<TaskManagement>();
         announcer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>(); //Helper.GetObject<Text>("Announcer");
 
         buttonImage = GameObject.FindGameObjectWithTag("Player_Buttons").GetComponent<Image>(); //Helper.GetObject<Image>("Player Button Image");
         displayText[0] = GameObject.FindGameObjectsWithTag("Player_Answer")[0].GetComponent<TextMesh>(); //Helper.GetObject<TextMesh>("Player's answer");
         displayText[1] = GameObject.FindGameObjectsWithTag("Player_Answer")[1].GetComponent<TextMesh>();
 
-        announcerAudio = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<AudioSource>(); //Helper.GetObject<AudioSource>("Announcer");
-
-        if (task != string.Empty && objectives.text.Contains(task))
+        if (task != string.Empty && 
+            (taskManagement.currentTasks.Contains(task) || taskManagement.completedTasks.Contains(task)))
         {
             image.enabled = false;
         }
@@ -69,17 +69,12 @@ public class ReadSign : MonoBehaviour {
             {
                 image.enabled = false;
 
-                if (objectives != null)
-                {
-                    objectives.text += task + "\n";
-
-                    yield return DisplayTaskAnnouncer();
-                }
+                yield return taskManagement.AddTask(task);
             }
         }
     }
 
-    private IEnumerator OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && audio != null && !isPlayed)
         {
@@ -89,43 +84,19 @@ public class ReadSign : MonoBehaviour {
 
         if (collision.CompareTag("Player") && collision.isTrigger)
         {
-            yield return ShowInteractionButton();
+            ShowInteractionButton();
         }
     }
 
-    private IEnumerator OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && collision.isTrigger)
+        if (collision.CompareTag("Player") && collision.isTrigger && !isNextTriggerTriggered)
         {
-            yield return HideInteraction();
+            HideInteraction();
         }
     }
 
-    private IEnumerator DisplayTaskAnnouncer()
-    {
-        if (announcer != null)
-        {
-            announcer.text = "New task added";
-
-            if (announcerAudio != null)
-            {
-                var path = "Sound/bookFlip1";
-                var sound = Resources.Load<AudioClip>(path);
-
-                if (sound != null)
-                {
-                    announcerAudio.clip = sound;
-                    announcerAudio.Play();
-                }
-            }
-
-            yield return new WaitForSeconds(5);
-
-            announcer.text = string.Empty;
-        }
-    }
-
-    private IEnumerator ShowInteractionButton()
+    private void ShowInteractionButton()
     {
         if (buttonImage != null)
         {
@@ -135,12 +106,10 @@ public class ReadSign : MonoBehaviour {
             buttonImage.sprite = image;
             buttonImage.enabled = true;
             isPlayerNearSign = true;
-
-            yield return null;
         }
     }
 
-    private IEnumerator HideInteraction()
+    private void HideInteraction()
     {
         if (buttonImage != null)
         {
@@ -153,7 +122,5 @@ public class ReadSign : MonoBehaviour {
         }
 
         isPlayerNearSign = false;
-
-        yield return null;
     }
 }

@@ -34,19 +34,6 @@ public class AIMovement : MonoBehaviour {
         currentPatrolPoint = patrolPoints[currentPatrolIndex];
     }
 
-    private float GetPoint(float axisValue, ref float previousValue)
-    {
-        float position = 0f;
-
-        if (previousValue > axisValue) position = -1f;
-        else if (previousValue < axisValue) position = 1f;
-        //else if (previousValue == axisValue) position = 0f;
-
-        previousValue = axisValue;
-
-        return position;
-    }
-
     private Vector2 AnimateNPC()
     {
         var movementVector = Vector2.MoveTowards(new Vector2(aiBody.transform.position.x, aiBody.transform.position.y),
@@ -67,7 +54,6 @@ public class AIMovement : MonoBehaviour {
             var movementVector = AnimateNPC(); //animate pc movement
 
             aiBody.transform.position = movementVector; //move npc
-
             //Debug.Log(currentPatrolIndex + "|" + currentPatrolPoint.position.x + "||" + currentPatrolPoint.position.y + "|" + aiBody.transform.position.x + "||" +aiBody.transform.position.y);
         }
         else //if npc is waiting on patrol point or player is nearby

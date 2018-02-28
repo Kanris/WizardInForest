@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour {
 
+    private SpriteRenderer npcDialogueImage;
+
     private Queue<string> sentences;
     private bool isDialogueInProcess = false;
     private Image playerButton;
@@ -13,7 +15,6 @@ public class DialogueManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         sentences = new Queue<string>();
-
         playerButton = GameObject.FindGameObjectWithTag("Player_Buttons").GetComponent<Image>();
     }
 
@@ -21,11 +22,7 @@ public class DialogueManager : MonoBehaviour {
     {
         if (isDialogueInProcess)
         {
-            playerButton.enabled = true;
-            var path = "Button/button_Space";
-            var image = Resources.Load<Sprite>(path);
-
-            playerButton.sprite = image;
+            ShowPlayerInteractionButton("button_Space");
         }
 
         if (isDialogueInProcess && Input.GetKeyDown("space"))
@@ -34,12 +31,10 @@ public class DialogueManager : MonoBehaviour {
         }
     }
 
-    public void StartDialogue(Dialogue dialogue, TextMesh[] textMesh)
+    public void StartDialogue(Dialogue dialogue, TextMesh[] textMesh, SpriteRenderer npcDialogueImage)
     {
-        Debug.Log("Starting conversation with + " + dialogue.name);
-
         sentences.Clear();
-
+        this.npcDialogueImage = npcDialogueImage;
         foreach (var sentence in dialogue.sentences)
         {
             sentences.Enqueue(sentence);
@@ -61,7 +56,6 @@ public class DialogueManager : MonoBehaviour {
         }
         
         var sentence = sentences.Dequeue();
-        //this.textMesh.text = sentence;
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
@@ -72,17 +66,32 @@ public class DialogueManager : MonoBehaviour {
 
         foreach (var letter in sentence.ToCharArray())
         {
-            textMesh[0].text = textMesh[1].text += letter;
-            yield return new WaitForSeconds(0.05f);
+            if (isDialogueInProcess)
+            {
+                textMesh[0].text = textMesh[1].text += letter;
+                yield return new WaitForSeconds(0.05f);
+            }
         }
     }
 
     public void EndDialogue(TextMesh[] textMesh)
     {
+        if (isDialogueInProcess) textMesh[0].text = textMesh[1].text = string.Empty;
+        if (npcDialogueImage != null) npcDialogueImage.enabled = true;
+
         isDialogueInProcess = false;
         playerButton.enabled = false;
 
-        textMesh[0].text = textMesh[1].text = string.Empty;
+        ShowPlayerInteractionButton("button_E");
+    }
+
+    private void ShowPlayerInteractionButton(string button)
+    {
+        playerButton.enabled = true;
+        var path = "Button/" + button;
+        var image = Resources.Load<Sprite>(path);
+
+        playerButton.sprite = image;
     }
 
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +8,19 @@ public class DialogueTrigger : MonoBehaviour {
 
     public Dialogue dialogue;
     public TextMesh[] answerBox;
-
     public SpriteRenderer image;
 
-    private bool isPlayerNearby;
+    [TextArea]
+    public string task = string.Empty;
+    private TaskManagement taskManagement;
 
+    private bool isPlayerNearby;
     private bool isAnswered = false;
+
+    public void Start()
+    {
+        taskManagement = GameObject.FindObjectOfType<TaskManagement>();
+    }
 
     public void Update()
     {
@@ -21,7 +29,12 @@ public class DialogueTrigger : MonoBehaviour {
             if (!ReferenceEquals(dialogue, null))
             {
                 isAnswered = true;
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue, answerBox);
+                FindObjectOfType<DialogueManager>().StartDialogue(dialogue, answerBox, image);
+
+                if (!string.IsNullOrEmpty(task))
+                {
+                    StartCoroutine(TaskComplete());
+                }
             }
 
             if (isAnswered) image.enabled = false;
@@ -38,6 +51,10 @@ public class DialogueTrigger : MonoBehaviour {
         OnTriggerEvent(false, collision);
 
         FindObjectOfType<DialogueManager>().EndDialogue(answerBox);
+        ShowInteractionButton(false);
+
+        image.enabled = true;
+
     }
 
     private void OnTriggerEvent(bool enabled, Collider2D collision)
@@ -59,6 +76,14 @@ public class DialogueTrigger : MonoBehaviour {
         hudButton.sprite = image;
 
         hudButton.enabled = enabled;
+    }
+
+    private IEnumerator TaskComplete()
+    {
+        if (taskManagement.currentTasks.Contains(task))
+        {
+            yield return taskManagement.TaskComplete(task);
+        }
     }
 
 }
