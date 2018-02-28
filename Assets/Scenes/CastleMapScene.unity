@@ -287,7 +287,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4338488236266646, guid: 3f2d65866c9e2a041bf7a916cee871ff, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -9.08
+      value: -11.68
       objectReference: {fileID: 0}
     - target: {fileID: 4338488236266646, guid: 3f2d65866c9e2a041bf7a916cee871ff, type: 2}
       propertyPath: m_LocalPosition.y
@@ -1810,8 +1810,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: StartingMapScene
   audio: {fileID: 8300000, guid: 6a6714ee67efe0c4cbbe8e56753ecb5b, type: 3}
-  x: 17.12
-  y: -0.6134595
+  x: 18.44
+  y: -0.62
 --- !u!1 &1311690455
 GameObject:
   m_ObjectHideFlags: 0

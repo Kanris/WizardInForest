@@ -561,8 +561,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: StartingMapScene
   audio: {fileID: 8300000, guid: 1e92e0289ab2fde4090ef122cb93fad4, type: 3}
-  x: -5.183
-  y: 2.73
+  x: -7.14
+  y: 2.51
 --- !u!1 &598541169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,8 +1071,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: StartingMapScene
   audio: {fileID: 8300000, guid: 1e92e0289ab2fde4090ef122cb93fad4, type: 3}
-  x: -5.183
-  y: 2.73
+  x: -7.14
+  y: 2.51
 --- !u!4 &889800621
 Transform:
   m_ObjectHideFlags: 0
@@ -1936,8 +1936,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: StartingMapScene
   audio: {fileID: 8300000, guid: 1e92e0289ab2fde4090ef122cb93fad4, type: 3}
-  x: -5.183
-  y: 2.73
+  x: -7.14
+  y: 2.51
 --- !u!1 &2052866065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2050,8 +2050,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneName: StartingMapScene
   audio: {fileID: 8300000, guid: 1e92e0289ab2fde4090ef122cb93fad4, type: 3}
-  x: -5.183
-  y: 2.73
+  x: -7.14
+  y: 2.51
 --- !u!1 &2120438319
 GameObject:
   m_ObjectHideFlags: 0

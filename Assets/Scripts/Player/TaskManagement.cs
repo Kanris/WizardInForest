@@ -39,7 +39,7 @@ public class TaskManagement : MonoBehaviour {
 
         task = task.Remove(0, 1);
 
-        announcer.text = "Quest <" + task + ">\n complete!";
+        announcer.text = "Task <" + task + ">\n complete!";
         ShowCurrentTasks();
 
         yield return new WaitForSeconds(5f);
