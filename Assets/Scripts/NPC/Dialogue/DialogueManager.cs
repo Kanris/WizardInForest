@@ -8,7 +8,7 @@ public class DialogueManager : MonoBehaviour {
     private SpriteRenderer npcDialogueImage;
 
     private Queue<string> sentences;
-    private bool isDialogueInProcess = false;
+    public bool isDialogueInProcess = false;
     private Image playerButton;
     private TextMesh[] textMesh = new TextMesh[2];
 

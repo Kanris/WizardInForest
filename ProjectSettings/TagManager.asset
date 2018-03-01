@@ -15,6 +15,9 @@ TagManager:
   - HUD_Announcer
   - HUD
   - HUD_Health
+  - Fireball
+  - Location_announcer
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -634,6 +634,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1572152190058984, guid: 31791b583d8a11f49b79a5fcebac6eab, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1500552345180890, guid: 31791b583d8a11f49b79a5fcebac6eab, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31791b583d8a11f49b79a5fcebac6eab, type: 2}
   m_IsPrefabParent: 0
@@ -642,6 +650,23 @@ Transform:
   m_PrefabParentObject: {fileID: 4496655314018846, guid: 31791b583d8a11f49b79a5fcebac6eab,
     type: 2}
   m_PrefabInternal: {fileID: 124164223}
+--- !u!1 &124164225 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1500552345180890, guid: 31791b583d8a11f49b79a5fcebac6eab,
+    type: 2}
+  m_PrefabInternal: {fileID: 124164223}
+--- !u!114 &124164226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124164225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a30e7f3e287a4474a89f1e84a5a47839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 4
 --- !u!1 &127517177
 GameObject:
   m_ObjectHideFlags: 0
@@ -2919,7 +2944,7 @@ GameObject:
   - component: {fileID: 768993911}
   m_Layer: 0
   m_Name: ForestAnnouncer
-  m_TagString: Untagged
+  m_TagString: Location_announcer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6233,7 +6258,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2141004035}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.35, y: -1.24, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 124164224}

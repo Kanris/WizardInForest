@@ -13,11 +13,13 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2017.3.1f1</UnityVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <LangVersion>4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -311,13 +313,16 @@
     <Compile Include="Assets\Scripts\Environment\ReadSign.cs" />
     <Compile Include="Assets\Scripts\NPC\AI\AIMovement.cs" />
     <Compile Include="Assets\Scripts\NPC\AI\AIPatrolTalk.cs" />
+    <Compile Include="Assets\Scripts\NPC\AI\AIStats.cs" />
     <Compile Include="Assets\Scripts\NPC\AI\Phrases.cs" />
     <Compile Include="Assets\Scripts\NPC\AI\RandomMovement.cs" />
     <Compile Include="Assets\Scripts\NPC\Dialogue\Dialogue.cs" />
     <Compile Include="Assets\Scripts\NPC\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\NPC\Dialogue\DialogueTrigger.cs" />
     <Compile Include="Assets\Scripts\NPC\SortingLevel.cs" />
+    <Compile Include="Assets\Scripts\Player\Attack.cs" />
     <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Player\FireballHit.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Player\TaskManagement.cs" />

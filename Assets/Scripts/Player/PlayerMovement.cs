@@ -17,8 +17,10 @@ public class PlayerMovement : MonoBehaviour {
         anim = GetComponent<Animator>();
 
         audio = GetComponent<AudioSource>();
+
+        SetDefaulAnimation();
     }
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -60,5 +62,12 @@ public class PlayerMovement : MonoBehaviour {
         {
             audio.Stop();
         }
+    }
+
+    private void SetDefaulAnimation()
+    {
+        anim.SetFloat("inputX", 0);
+        anim.SetFloat("inputY", -1);
+        anim.SetBool("isWalking", false);
     }
 }
