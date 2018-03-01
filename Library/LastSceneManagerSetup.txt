@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/Limbo.unity
+- path: Assets/Scenes/StartingMapScene.unity
   isLoaded: 1
   isActive: 1

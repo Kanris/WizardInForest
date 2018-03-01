@@ -1025,7 +1025,8 @@ Prefab:
       propertyPath: currentPatrolIndex
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114394697043187956, guid: 83e37e4953ab67f469649738e9b83cbf, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 83e37e4953ab67f469649738e9b83cbf, type: 2}
   m_IsPrefabParent: 0
 --- !u!224 &192132099 stripped
@@ -1051,20 +1052,40 @@ MonoBehaviour:
   m_GameObject: {fileID: 192132101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 702f53edd805d5841931b1a5b779bf0e, type: 3}
+  m_Script: {fileID: 11500000, guid: 07df5be85eeb28347ba02ad178d54ea3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPatrolIndex: 0
+  isPlayerNearBy: 0
+  patrolPoints:
+  - {fileID: 122358891}
+  - {fileID: 649271}
+  speed: 0.4
+  animX: 0
+  animY: -1
+--- !u!114 &192132103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 192132101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98eaf5a9639768942b0d230b82a70150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   text:
   - {fileID: 192132100}
   - {fileID: 920183893}
-  phrasesPatrol:
-  - "What a day what \n a lovely day!"
-  - "Interesting am I always \n walking between \n two points?"
-  phrasesToPlayer:
-  - "Oh, do you want to get through?\n Well, you'll have to wait ..."
-  - '...'
-  - "I'm stopping you? \n What a pity..."
-  - "Thank you for reminding me \n to eat mushrooms."
+  phrases:
+    phrasesPatrol:
+    - "What a day what \n a lovely day!"
+    - "Interesting am I always \n walking between \n two points?"
+    phrasesToPlayer:
+    - "Oh, do you want to get through?\n Well, you'll have to wait ..."
+    - '...'
+    - "I'm stopping you? \n What a pity..."
+    - "Thank you for reminding me \n to eat mushrooms."
 --- !u!1001 &243320549
 Prefab:
   m_ObjectHideFlags: 0
