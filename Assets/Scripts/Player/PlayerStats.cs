@@ -22,6 +22,8 @@ public class PlayerStats : MonoBehaviour {
 
             var screenFader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>();
             StartCoroutine(screenFader.FadeToBlack());
+
+            Destroy(GameObject.FindGameObjectWithTag("Player"));
         }
     }
 
