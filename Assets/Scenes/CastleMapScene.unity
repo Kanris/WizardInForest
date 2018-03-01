@@ -193,6 +193,15 @@ Prefab:
       propertyPath: task
       value: -Barrels?
       objectReference: {fileID: 0}
+    - target: {fileID: 102167214235854984, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: m_Color.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303575236850004, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
   m_IsPrefabParent: 0
@@ -921,6 +930,33 @@ TextMesh:
   m_PrefabParentObject: {fileID: 102286245306631416, guid: 83e37e4953ab67f469649738e9b83cbf,
     type: 2}
   m_PrefabInternal: {fileID: 775418852}
+--- !u!1 &775418855 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1072060125215488, guid: 83e37e4953ab67f469649738e9b83cbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 775418852}
+--- !u!114 &775418856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 775418855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702f53edd805d5841931b1a5b779bf0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text:
+  - {fileID: 775418854}
+  - {fileID: 1093968384}
+  phrasesPatrol:
+  - "What a day what \n a lovely day!"
+  - "Interesting am I always \n walking between \n two points?"
+  phrasesToPlayer:
+  - "Oh, do you want to get through?\n Well, you'll have to wait ..."
+  - '...'
+  - "I'm stopping you? \n What a pity..."
+  - "Thank you for reminding me \n to eat mushrooms."
 --- !u!1 &823841887
 GameObject:
   m_ObjectHideFlags: 0
@@ -1277,6 +1313,33 @@ TextMesh:
   m_PrefabParentObject: {fileID: 102286245306631416, guid: 83e37e4953ab67f469649738e9b83cbf,
     type: 2}
   m_PrefabInternal: {fileID: 956458250}
+--- !u!1 &956458252 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1072060125215488, guid: 83e37e4953ab67f469649738e9b83cbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 956458250}
+--- !u!114 &956458253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 956458252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702f53edd805d5841931b1a5b779bf0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text:
+  - {fileID: 956458251}
+  - {fileID: 1048246561}
+  phrasesPatrol:
+  - "What a day what \n a lovely day!"
+  - "Interesting am I always \n walking between \n two points?"
+  phrasesToPlayer:
+  - "Oh, do you want to get through?\n Well, you'll have to wait ..."
+  - '...'
+  - "I'm stopping you? \n What a pity..."
+  - "Thank you for reminding me \n to eat mushrooms."
 --- !u!1 &965020261
 GameObject:
   m_ObjectHideFlags: 0
@@ -1919,7 +1982,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

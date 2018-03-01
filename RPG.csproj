@@ -310,6 +310,7 @@
     <Compile Include="Assets\Scripts\Environment\DamageFromRock.cs" />
     <Compile Include="Assets\Scripts\Environment\ReadSign.cs" />
     <Compile Include="Assets\Scripts\NPC\AIMovement.cs" />
+    <Compile Include="Assets\Scripts\NPC\AIPatrolTalk.cs" />
     <Compile Include="Assets\Scripts\NPC\Dialogue\Dialogue.cs" />
     <Compile Include="Assets\Scripts\NPC\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\NPC\Dialogue\DialogueTrigger.cs" />

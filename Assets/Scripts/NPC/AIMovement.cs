@@ -12,16 +12,10 @@ public class AIMovement : MonoBehaviour {
     public int currentPatrolIndex = 1;
 
     private bool isWaiting = false;
-    private bool isPlayerNearBy = false;
-
-    private delegate IEnumerator PTrigger();
+    public bool isPlayerNearBy = false;
 
     public Transform[] patrolPoints;
     public float speed = 0.1f;
-
-    public TextMesh[] text = new TextMesh[2];
-    private string[] phrases = { "what a day what \n a lovely day!", "Interesting am I always \n walking between \n two points?" };//, string.Empty };
-    private string[] phrasesToPlayer = { "Oh, do you want to get through?\n Well, you'll have to wait ...", "...", "I'm stopping you? \n What a pity...", "Thank you for reminding me \n to eat mushrooms." };
 
     [SerializeField]
     private float animX = 0f, animY = 0f;
@@ -65,32 +59,21 @@ public class AIMovement : MonoBehaviour {
 
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
-        //if npc is near patrol point or near player
         if (collision.isTrigger && !isPlayerNearBy)
         {
             switch (collision.tag)
             {
                 case "Patrol": //is patrol point
-                    yield return TriggerLogic(phrases, PatrolTrigger);
-                break;
+                    yield return GetComponent<AIPatrolTalk>().Talk(false, PatrolTrigger);
+                    break;
 
                 case "Player": //is player
-                    yield return TriggerLogic(phrasesToPlayer, PlayerNearby);
-                break;
+                    yield return GetComponent<AIPatrolTalk>().Talk(true, PlayerNearby);
+                    break;
             }
         }
     }
-    //what to do when trigger triggered xD
-    private IEnumerator TriggerLogic(string[] phrases, PTrigger pTrigger)
-    {
-        int randPhraseIndex = Random.Range(0, phrases.Length); //get random phrase index
 
-        if (text != null) text[0].text = text[1].text = phrases[randPhraseIndex]; //display phrase
-
-        yield return pTrigger(); //wait
-
-        if (!isPlayerNearBy & text != null) text[0].text = text[1].text = ""; //clear text if player is not nearby
-    }
 
     private IEnumerator OnTriggerExit2D(Collider2D collision)
     {

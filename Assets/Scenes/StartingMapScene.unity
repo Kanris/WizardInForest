@@ -938,12 +938,12 @@ Prefab:
     - target: {fileID: 224218971182187220, guid: 83e37e4953ab67f469649738e9b83cbf,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 4.619999
+      value: 4.15
       objectReference: {fileID: 0}
     - target: {fileID: 224218971182187220, guid: 83e37e4953ab67f469649738e9b83cbf,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -1.4581234
+      value: -1.99
       objectReference: {fileID: 0}
     - target: {fileID: 224218971182187220, guid: 83e37e4953ab67f469649738e9b83cbf,
         type: 2}
@@ -998,7 +998,7 @@ Prefab:
     - target: {fileID: 114394697043187956, guid: 83e37e4953ab67f469649738e9b83cbf,
         type: 2}
       propertyPath: animY
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 102286245306631416, guid: 83e37e4953ab67f469649738e9b83cbf,
         type: 2}
@@ -1020,6 +1020,11 @@ Prefab:
       propertyPath: text.Array.data[1]
       value: 
       objectReference: {fileID: 920183893}
+    - target: {fileID: 114394697043187956, guid: 83e37e4953ab67f469649738e9b83cbf,
+        type: 2}
+      propertyPath: currentPatrolIndex
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 83e37e4953ab67f469649738e9b83cbf, type: 2}
   m_IsPrefabParent: 0
@@ -1033,6 +1038,33 @@ TextMesh:
   m_PrefabParentObject: {fileID: 102286245306631416, guid: 83e37e4953ab67f469649738e9b83cbf,
     type: 2}
   m_PrefabInternal: {fileID: 192132098}
+--- !u!1 &192132101 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1072060125215488, guid: 83e37e4953ab67f469649738e9b83cbf,
+    type: 2}
+  m_PrefabInternal: {fileID: 192132098}
+--- !u!114 &192132102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 192132101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702f53edd805d5841931b1a5b779bf0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text:
+  - {fileID: 192132100}
+  - {fileID: 920183893}
+  phrasesPatrol:
+  - "What a day what \n a lovely day!"
+  - "Interesting am I always \n walking between \n two points?"
+  phrasesToPlayer:
+  - "Oh, do you want to get through?\n Well, you'll have to wait ..."
+  - '...'
+  - "I'm stopping you? \n What a pity..."
+  - "Thank you for reminding me \n to eat mushrooms."
 --- !u!1001 &243320549
 Prefab:
   m_ObjectHideFlags: 0
@@ -5235,9 +5267,43 @@ Prefab:
       propertyPath: m_RootOrder
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: answerBox.Array.data[0]
+      value: 
+      objectReference: {fileID: 1659075160}
+    - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: answerBox.Array.data[1]
+      value: 
+      objectReference: {fileID: 1659075159}
+    - target: {fileID: 102167214235854984, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: m_Color.rgba
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 102332114569514032, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: m_Color.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303575236850004, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
   m_IsPrefabParent: 0
+--- !u!102 &1659075159 stripped
+TextMesh:
+  m_PrefabParentObject: {fileID: 102332114569514032, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+    type: 2}
+  m_PrefabInternal: {fileID: 1659075158}
+--- !u!102 &1659075160 stripped
+TextMesh:
+  m_PrefabParentObject: {fileID: 102167214235854984, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+    type: 2}
+  m_PrefabInternal: {fileID: 1659075158}
 --- !u!1 &1676757057
 GameObject:
   m_ObjectHideFlags: 0
