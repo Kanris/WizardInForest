@@ -14,6 +14,8 @@ public class RandomMovement : MonoBehaviour {
     private bool isMoveTimeIsOver = false; //is npc has to stop
     private Vector2 whereToMove = Vector2.zero; //where to move
 
+    public bool isAttacking = false;
+
 	// Use this for initialization
 	void Start () {
         aiBody = GetComponent<Rigidbody2D>(); //get npc body
@@ -26,7 +28,15 @@ public class RandomMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (!isWaiting) //if npc is not waiting
+        if (isAttacking)
+        {
+            whereToMove = GameObject.FindGameObjectWithTag("Player").transform.position;
+            Debug.Log("Player found");
+            var movementVector = WhereToMove(whereToMove);
+            aiBody.transform.position = movementVector;
+        }
+
+        if (!isWaiting && !isAttacking) //if npc is not waiting
         {
             var movementVector = WhereToMove(whereToMove); //get next movement position
 

@@ -31,6 +31,8 @@ public class FireballHit : MonoBehaviour {
         {
             collision.gameObject.GetComponent<AIStats>().ManageHealth(
                 FindObjectOfType<PlayerStats>().fireballAtack);
+            Debug.Log("isAttack");
+            collision.gameObject.transform.parent.gameObject.GetComponent<RandomMovement>().isAttacking = true;
         }
     }
 

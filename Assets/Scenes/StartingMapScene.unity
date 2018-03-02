@@ -636,7 +636,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1572152190058984, guid: 31791b583d8a11f49b79a5fcebac6eab, type: 2}
       propertyPath: m_TagString
-      value: Enemy
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 1500552345180890, guid: 31791b583d8a11f49b79a5fcebac6eab, type: 2}
       propertyPath: m_TagString

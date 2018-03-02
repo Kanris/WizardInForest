@@ -21,6 +21,8 @@ public class Warp : MonoBehaviour {
             collision.gameObject.transform.position = warpTarget.position;
             Camera.main.transform.position = warpTarget.position;
 
+            LostSight();
+
             ChangeMusic();
 
             yield return StartCoroutine(screenFador.FadeToClear());
@@ -48,6 +50,19 @@ public class Warp : MonoBehaviour {
             var audioSource = camera.GetComponent<AudioSource>();
             audioSource.clip = audio;
             audioSource.Play();
+        }
+    }
+
+    private void LostSight()
+    {
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        
+        if (enemies.Length > 0)
+        {
+            foreach (var enemy in enemies)
+            {
+                enemy.transform.parent.gameObject.GetComponent<RandomMovement>().isAttacking = false;
+            }
         }
     }
 }
