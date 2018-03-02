@@ -15,6 +15,7 @@ public class RandomMovement : MonoBehaviour {
     private Vector2 whereToMove = Vector2.zero; //where to move
 
     public bool isAttacking = false;
+    public bool isNearPlayer = false;
 
 	// Use this for initialization
 	void Start () {
@@ -30,8 +31,15 @@ public class RandomMovement : MonoBehaviour {
 
         if (isAttacking)
         {
-            whereToMove = GameObject.FindGameObjectWithTag("Player").transform.position;
-            Debug.Log("Player found");
+            if (isNearPlayer)
+            {
+                whereToMove = aiBody.transform.position;
+            }
+            else
+            {
+                whereToMove = GameObject.FindGameObjectWithTag("Player").transform.position;
+            }
+
             var movementVector = WhereToMove(whereToMove);
             aiBody.transform.position = movementVector;
         }

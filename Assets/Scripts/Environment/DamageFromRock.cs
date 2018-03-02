@@ -7,13 +7,26 @@ public class DamageFromRock : MonoBehaviour {
 
     [SerializeField]
     private AudioClip hitSound;
+    public bool isPlayerNear = false;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && collision.isTrigger)
         {
-            PlayHitSound();
-            HitPlayer();
+            isPlayerNear = true;
+            gameObject.transform.parent.
+                gameObject.GetComponent<RandomMovement>().isNearPlayer = isPlayerNear;
+            yield return HitPlayer();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isPlayerNear = false;
+            gameObject.transform.parent.
+                gameObject.GetComponent<RandomMovement>().isNearPlayer = isPlayerNear;
         }
     }
 
@@ -24,9 +37,15 @@ public class DamageFromRock : MonoBehaviour {
         announcerAudio.Play();
     }
 
-    private void HitPlayer()
+    private IEnumerator HitPlayer()
     {
         var playerHealthHud = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
-        playerHealthHud.ManageHealth(-1);
+
+        while (isPlayerNear)
+        {
+            playerHealthHud.ManageHealth(-1);
+            PlayHitSound();
+            yield return new WaitForSeconds(2f);
+        }
     }
 }
