@@ -124,7 +124,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-8b8165ee16ead6e72e9c334fb26529e8 Assembly-CSharp.dll:.DamageFromRock
+1468b95dec1e0debecf49595a0d61aa2 Assembly-CSharp.dll:.DamageFromRock
 d0a12d226eb645f8a384cace61277c30 Assembly-CSharp.dll:.DialogueTrigger
 c5b77decb97ffc0c36e810b155d27dde Assembly-CSharp.dll:Tiled2Unity.TiledMap
 9eff0a32f13f9d2f6a0f71481a9cc275 Assembly-CSharp.dll:.Attack
@@ -166,13 +166,13 @@ c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.Spa
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
 8ff8e4f2fdfb53cf0cef85f24f6f7740 Assembly-CSharp.dll:Tiled2Unity.TileLayer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.ScreenFader
-dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.RandomMovement
+8589112cfa3cd19b482136cf59985f8e Assembly-CSharp.dll:.RandomMovement
 9de3a22eca9aefadba2d10d5987cefe3 UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Tiled2Unity.SortingLayerExposed
 9f443812eba12bd02350c0c71f6b3369 Assembly-CSharp.dll:.WarpToScene
 b6a4e0f46582e1b4ea27adb53405c4c7 Assembly-CSharp.dll:Tiled2Unity.SpriteDepthInMap
 d290070ecf091336e70150a7db25d112 Assembly-CSharp.dll:Tiled2Unity.ObjectLayer
+8f1b656d6b611ab46f4704de515180e7 Assembly-CSharp.dll:.AIStats
 329bcbf88b3c0197d230f5b9ceb88333 Assembly-CSharp.dll:Tiled2Unity.TmxObject
 d398c66f14f7c92d0e9851e32d9d2c03 Assembly-CSharp.dll:.ReadSign
 eed191da619ba258d69784932cd4443c Assembly-CSharp.dll:.TaskManagement
-0f248bb2586f49235a8b9317ad132c5d Assembly-CSharp.dll:.AIStats

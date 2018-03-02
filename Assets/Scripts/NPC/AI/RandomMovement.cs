@@ -29,19 +29,26 @@ public class RandomMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        //if enemy attacks player
         if (isAttacking)
         {
-            if (isNearPlayer)
+            if (isNearPlayer) //if enemy is near player
             {
-                whereToMove = aiBody.transform.position;
+                whereToMove = aiBody.transform.position; //stop moving
             }
-            else
+            else //if player is not near the enemy
             {
-                whereToMove = GameObject.FindGameObjectWithTag("Player").transform.position;
+                var player = GameObject.FindGameObjectWithTag("Player"); //find player
+                if (player != null) //if player still alive
+                {
+                    whereToMove = player.transform.position; //get player position
+                }
             }
 
-            var movementVector = WhereToMove(whereToMove);
-            aiBody.transform.position = movementVector;
+            var movementVector = WhereToMove(whereToMove); //where to move
+            aiBody.MovePosition(movementVector); //move enemy
+           
+            SetAnimation(movementVector.x, movementVector.y); //set animation
         }
 
         if (!isWaiting && !isAttacking) //if npc is not waiting

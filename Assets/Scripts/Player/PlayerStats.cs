@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour {
 
@@ -14,6 +15,7 @@ public class PlayerStats : MonoBehaviour {
 		if (Health == 0)
         {
             StartCoroutine(EndGameScreen());
+            Health--;
         }
     }
 
@@ -35,14 +37,17 @@ public class PlayerStats : MonoBehaviour {
     private void GetHealthImage(int health, bool isEnabled)
     {
         var path = "Health" + Health;
-        var healthHUD = GameObject.Find(path).GetComponent<Image>();
-        healthHUD.enabled = isEnabled;
+        var healthHUD = GameObject.Find(path);
+
+        if (healthHUD != null)
+        {
+            healthHUD.GetComponent<Image>().enabled = isEnabled;
+        }
     }
 
     private IEnumerator EndGameScreen()
     {
-        var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-        player.isPlayerDead = true;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().isPlayerDead = true;
 
         var announcer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>();
         announcer.text = "You died";
@@ -51,6 +56,13 @@ public class PlayerStats : MonoBehaviour {
         yield return screenFader.FadeToBlack();
 
         Destroy(GameObject.FindGameObjectWithTag("Player"));
+        Destroy(GameObject.FindGameObjectWithTag("HUD"));
+        Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
+
+        SceneManager.LoadScene("Limbo");
+
+        yield return screenFader.FadeToClear();
+
     }
 
 }

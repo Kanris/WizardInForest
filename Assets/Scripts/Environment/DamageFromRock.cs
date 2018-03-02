@@ -11,7 +11,9 @@ public class DamageFromRock : MonoBehaviour {
 
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && collision.isTrigger)
+        if (collision.CompareTag("Player") && collision.isTrigger &&
+            gameObject.transform.parent.
+                gameObject.GetComponent<RandomMovement>().isAttacking)
         {
             isPlayerNear = true;
             gameObject.transform.parent.
@@ -43,9 +45,12 @@ public class DamageFromRock : MonoBehaviour {
 
         while (isPlayerNear)
         {
-            playerHealthHud.ManageHealth(-1);
-            PlayHitSound();
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(1.5f);
+            if (isPlayerNear)
+            {
+                playerHealthHud.ManageHealth(-1);
+                PlayHitSound();
+            }
         }
     }
 }
