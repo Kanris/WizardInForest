@@ -13,6 +13,7 @@ public class ReadSign : MonoBehaviour {
     public SpriteRenderer image = null;
 
     private TaskManagement taskManagement;
+    public int taskID = -1;
     public string task = string.Empty;
 
     private Text announcer;
@@ -34,7 +35,8 @@ public class ReadSign : MonoBehaviour {
         displayText[1] = GameObject.FindGameObjectsWithTag("Player_Answer")[1].GetComponent<TextMesh>();
 
         if (task != string.Empty && 
-            (taskManagement.currentTasks.Contains(task) || taskManagement.completedTasks.Contains(task)))
+            (taskManagement.IsTaskAdded(taskManagement.currentTasks, taskID) >= 0 ||
+            taskManagement.IsTaskAdded(taskManagement.completedTasks, taskID) >= 0))
         {
             image.enabled = false;
         }
@@ -69,7 +71,7 @@ public class ReadSign : MonoBehaviour {
             {
                 image.enabled = false;
 
-                yield return taskManagement.AddTask(task);
+                yield return taskManagement.AddTask(taskID, task);
             }
         }
     }

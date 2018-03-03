@@ -344,6 +344,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: What a strange dream...
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &78636915
@@ -415,6 +416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Mail Box
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &94796085
@@ -714,6 +716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Who placed it here?
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &127517180
@@ -1273,6 +1276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Another barrel
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &324814732
@@ -2917,6 +2921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: I need to buy some food
   image: {fileID: 1220099438}
+  taskID: 0
   task: -Buy food
   audio: {fileID: 0}
 --- !u!61 &691881503
@@ -3300,6 +3305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Empty
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &891828782
@@ -3371,6 +3377,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: I'm not remember it here
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &894276193
@@ -3442,6 +3449,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Nothing here
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &911430467
@@ -4788,6 +4796,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Another barrel...
   image: {fileID: 24745348}
+  taskID: 1
   task: -Barrels?
   audio: {fileID: 0}
 --- !u!61 &1386749384
@@ -4993,6 +5002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: The clothes have not dried yet
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &1435776835
@@ -5133,6 +5143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Interesting
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &1473620051
@@ -5204,6 +5215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Who puts it here?
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &1494375856
@@ -5306,6 +5318,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Castle of the old mage
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &1510171307
@@ -5603,6 +5616,26 @@ Prefab:
     - target: {fileID: 4303575236850004, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
       propertyPath: m_LocalPosition.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: dialogue.task
+      value: -Barrels?
+      objectReference: {fileID: 0}
+    - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: dialogue.updatedTask
+      value: -Go to port.
+      objectReference: {fileID: 0}
+    - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: taskID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: objective
+      value: -Go to port
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
@@ -6046,6 +6079,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Maybe i can sell it
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &1913974212
@@ -6201,6 +6235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Mage's house
   image: {fileID: 0}
+  taskID: -1
   task: 
   audio: {fileID: 0}
 --- !u!61 &1977682634

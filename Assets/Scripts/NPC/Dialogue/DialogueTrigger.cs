@@ -10,8 +10,8 @@ public class DialogueTrigger : MonoBehaviour {
     public TextMesh[] answerBox;
     public SpriteRenderer image;
 
-    [TextArea]
-    public string task = string.Empty;
+    public int taskID = -1;
+    public string objective = string.Empty;
     private TaskManagement taskManagement;
 
     private bool isPlayerNearby;
@@ -31,9 +31,13 @@ public class DialogueTrigger : MonoBehaviour {
                 isAnswered = true;
                 FindObjectOfType<DialogueManager>().StartDialogue(dialogue, answerBox, image);
 
-                if (!string.IsNullOrEmpty(task))
+                if (taskID >= 0 && string.IsNullOrEmpty(objective))
                 {
                     StartCoroutine(TaskComplete());
+                } 
+                else
+                {
+                    StartCoroutine(UpdateTask());
                 }
             }
 
@@ -78,12 +82,14 @@ public class DialogueTrigger : MonoBehaviour {
         hudButton.enabled = enabled;
     }
 
+    private IEnumerator UpdateTask()
+    {
+        yield return taskManagement.AddTask(taskID, objective);
+    }
+
     private IEnumerator TaskComplete()
     {
-        if (taskManagement.currentTasks.Contains(task))
-        {
-            yield return taskManagement.TaskComplete(task);
-        }
+        yield return taskManagement.TaskComplete(taskID);
     }
 
 }
