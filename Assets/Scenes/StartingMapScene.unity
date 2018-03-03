@@ -346,6 +346,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &78636915
 BoxCollider2D:
@@ -418,6 +419,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &94796085
 BoxCollider2D:
@@ -718,6 +720,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &127517180
 BoxCollider2D:
@@ -1278,6 +1281,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &324814732
 BoxCollider2D:
@@ -2923,6 +2927,7 @@ MonoBehaviour:
   image: {fileID: 1220099438}
   taskID: 0
   task: -Buy food
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &691881503
 BoxCollider2D:
@@ -3307,6 +3312,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &891828782
 BoxCollider2D:
@@ -3379,6 +3385,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &894276193
 BoxCollider2D:
@@ -3451,6 +3458,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &911430467
 BoxCollider2D:
@@ -4798,6 +4806,7 @@ MonoBehaviour:
   image: {fileID: 24745348}
   taskID: 1
   task: -Barrels?
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1386749384
 BoxCollider2D:
@@ -5004,6 +5013,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1435776835
 BoxCollider2D:
@@ -5145,6 +5155,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1473620051
 BoxCollider2D:
@@ -5217,6 +5228,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1494375856
 BoxCollider2D:
@@ -5320,6 +5332,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1510171307
 BoxCollider2D:
@@ -5636,6 +5649,11 @@ Prefab:
         type: 2}
       propertyPath: objective
       value: -Go to port
+      objectReference: {fileID: 0}
+    - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: isTaskUpdate
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
@@ -6081,6 +6099,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1913974212
 BoxCollider2D:
@@ -6237,6 +6256,7 @@ MonoBehaviour:
   image: {fileID: 0}
   taskID: -1
   task: 
+  isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1977682634
 BoxCollider2D:

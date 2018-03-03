@@ -12,6 +12,8 @@ public class DialogueTrigger : MonoBehaviour {
 
     public int taskID = -1;
     public string objective = string.Empty;
+    public bool isTaskUpdate = false;
+
     private TaskManagement taskManagement;
 
     private bool isPlayerNearby;
@@ -37,7 +39,7 @@ public class DialogueTrigger : MonoBehaviour {
                 } 
                 else
                 {
-                    StartCoroutine(UpdateTask());
+                    StartCoroutine(UpdateTask(isTaskUpdate));
                 }
             }
 
@@ -82,9 +84,9 @@ public class DialogueTrigger : MonoBehaviour {
         hudButton.enabled = enabled;
     }
 
-    private IEnumerator UpdateTask()
+    private IEnumerator UpdateTask(bool isTaskUpdate)
     {
-        yield return taskManagement.AddTask(taskID, objective);
+        yield return taskManagement.AddTask(taskID, objective, isTaskUpdate);
     }
 
     private IEnumerator TaskComplete()

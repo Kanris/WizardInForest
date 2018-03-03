@@ -20,7 +20,7 @@ public class TaskManagement : MonoBehaviour {
         asAnnouncer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<AudioSource>();
     }
 
-    public IEnumerator AddTask(int id, string task)
+    public IEnumerator AddTask(int id, string task, bool isTaskUpdate)
     {
         var indexInCompletedTask = IsTaskAdded(completedTasks, id, task);
 
@@ -33,18 +33,20 @@ public class TaskManagement : MonoBehaviour {
 
             if (index >= 0)
             {
-                announcerMessage = "Task" + currentTasks[index].GetObjective() + "updated!";
+                announcerMessage = "Task <" + currentTasks[index].GetObjective().Remove(0, 1) + ">updated!";
                 currentTasks[index].UpdateObjective(task);
 
                 ShowCurrentTasks();
             }
-            else if (index == -1)
+            else if (index == -1 && !isTaskUpdate)
             {
+                Debug.Log("Add task!");
+
                 var newTask = new Task(id, task);
                 currentTasks.Add(newTask);
 
                 announcerMessage = "Task added!";
-                ShowCurrentTask(id);
+                ShowCurrentTask(currentTasks.Count - 1);
             }
 
             txtAnnouncer.text = announcerMessage;

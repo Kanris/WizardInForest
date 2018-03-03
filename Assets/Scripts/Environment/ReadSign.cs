@@ -15,6 +15,7 @@ public class ReadSign : MonoBehaviour {
     private TaskManagement taskManagement;
     public int taskID = -1;
     public string task = string.Empty;
+    public bool isTaskUpdate = false;
 
     private Text announcer;
 
@@ -71,7 +72,7 @@ public class ReadSign : MonoBehaviour {
             {
                 image.enabled = false;
 
-                yield return taskManagement.AddTask(taskID, task);
+                yield return taskManagement.AddTask(taskID, task, isTaskUpdate);
             }
         }
     }
