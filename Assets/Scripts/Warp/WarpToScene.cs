@@ -26,9 +26,11 @@ public class WarpToScene : MonoBehaviour {
 
             var player = GameObject.FindGameObjectWithTag("Player");
             var camera = GameObject.FindGameObjectWithTag("MainCamera");
+            var eventSystem = GameObject.FindGameObjectWithTag("EventSystem");
 
             DontDestroyOnLoad(player);
             DontDestroyOnLoad(camera);
+            DontDestroyOnLoad(eventSystem);
             DontDestroyOnLoad(GameObject.FindGameObjectWithTag("HUD"));
 
             MovePlayerToPosition(player, camera);

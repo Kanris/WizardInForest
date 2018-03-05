@@ -30,7 +30,7 @@ public class Task {
 
     public void UpdateObjective(string objective)
     {
-        log.Add(this.task);
+        log.Add(objective);
 
         this.task = objective;
     }

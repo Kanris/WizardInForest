@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class TaskManagement : MonoBehaviour {
@@ -13,11 +14,53 @@ public class TaskManagement : MonoBehaviour {
 
     private AudioSource asAnnouncer; //task sound
 
+    private GameObject journal; //journal gameobject
+    private Text taskLog; //task log
+    private GameObject buttonsGrid;
+    private bool isJournalOpen = false; //is journal is open
+    private float nextYPos = 90;
+
     // Use this for initialization
     void Start () {
         txtObjectives = GameObject.FindGameObjectWithTag("HUD_Objectives").GetComponent<Text>(); //get hud objectvies
         txtAnnouncer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>(); //get hud announcer
         asAnnouncer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<AudioSource>(); //get hud audio source
+
+        journal = GameObject.FindGameObjectWithTag("Journal");
+        taskLog = GameObject.FindGameObjectWithTag("TaskLog").GetComponent<Text>();
+        buttonsGrid = GameObject.FindGameObjectWithTag("ButtonGrid");
+        journal.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            StartCoroutine(OpenCloseJournal());
+        }
+    }
+
+    private IEnumerator OpenCloseJournal()
+    {
+        isJournalOpen = !isJournalOpen;
+        journal.SetActive(isJournalOpen);
+
+        var fader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>();
+
+        yield return isJournalOpen ? fader.FadeToBlack() : fader.FadeToClear();
+    }
+
+    public void LoadTaskLog(Text buttonText)
+    {
+        var task = buttonText.text;
+
+        var neededTask = currentTasks.Find(x => x.GetLog().Contains(task));
+
+        taskLog.text = string.Empty;
+        foreach (var item in neededTask.GetLog())
+        {
+            taskLog.text += item + "\n";
+        }
     }
 
     //add/update task
@@ -44,10 +87,25 @@ public class TaskManagement : MonoBehaviour {
 
                 announcerMessage = "Task added!"; //form add announcer message
                 ShowCurrentTask(currentTasks.Count - 1); //update current task list in the HUD
+
+                AddTaskInJournal(taskInfo.task); //add task button to journal
             }
 
             yield return ShowAnnouncerMessage(announcerMessage); //show announcer message for player
         }
+    }
+
+    private void AddTaskInJournal(string task)
+    {
+        var button = Instantiate(Resources.Load<GameObject>("Prefab/TaskButton"));
+
+        var buttonText = button.transform.GetChild(0).GetComponent<Text>();
+        buttonText.text = task;
+
+        button.transform.SetParent(buttonsGrid.transform);
+        button.GetComponent<RectTransform>().localPosition = new Vector3(0, nextYPos, 0);
+        button.GetComponent<Button>().onClick.AddListener(() => LoadTaskLog(buttonText));
+        nextYPos -= 30;
     }
 
     //show announcer message for player
