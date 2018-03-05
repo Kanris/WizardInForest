@@ -4,42 +4,47 @@ using UnityEngine;
 
 public class ScreenFader : MonoBehaviour {
 
-    private Animator animator;
-    private bool isFading = false;
+    private Animator animator; //hud animator
+    private bool isFading = false; //is animation in progress
 
 	// Use this for initialization
 	void Start () {
 
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>(); //get hud animator
 
 	}
 
+    //fade from black to clear
     public IEnumerator FadeToClear()
     {
-        isFading = true;
+        isFading = true; //animation is in progress
 
-        animator.SetTrigger("fadeIn");
+        animator.SetTrigger("fadeIn"); //start fadeIn animation
 
+        //wait until animation is complete
         while (isFading)
         {
             yield return null;
         }
     }
 
+    //fade from clear to black
     public IEnumerator FadeToBlack()
     {
-        isFading = true;
+        isFading = true; //animation is in progress
 
-        animator.SetTrigger("fadeOut");
+        animator.SetTrigger("fadeOut"); //start fadeOut animation
 
+        //wait until animation is complete
         while (isFading)
         {
             yield return null;
         }
     }
     
+    //animation complete
     public void AnimationComplete()
     {
-        isFading = false;
+        isFading = false; //stop animation
     }
 }

@@ -329,7 +329,7 @@ Transform:
   m_Children:
   - {fileID: 2128662920}
   m_Father: {fileID: 1502438208}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &78636914
 MonoBehaviour:
@@ -344,9 +344,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: What a strange dream...
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &78636915
 BoxCollider2D:
@@ -417,9 +418,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Mail Box
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &94796085
 BoxCollider2D:
@@ -446,105 +448,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.29848003, y: 0.5283265}
   m_EdgeRadius: 0
---- !u!1 &98098356
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 98098357}
-  - component: {fileID: 98098360}
-  - component: {fileID: 98098359}
-  - component: {fileID: 98098358}
-  m_Layer: 0
-  m_Name: Text
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &98098357
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 98098356}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.082, y: 0.202, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 691881501}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &98098358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 98098356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5f09c7a31c225149b35dd599b3656c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SortingLayer: Default
-  OrderInLayer: 99
---- !u!102 &98098359
-TextMesh:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 98098356}
-  m_Text: 
-  m_OffsetZ: 0
-  m_CharacterSize: 0.05
-  m_LineSpacing: 1
-  m_Anchor: 4
-  m_Alignment: 1
-  m_TabSize: 4
-  m_FontSize: 0
-  m_FontStyle: 0
-  m_RichText: 1
-  m_Font: {fileID: 12800000, guid: fa7fdfe1352ae744498d05fc48853d07, type: 3}
-  m_Color:
-    serializedVersion: 2
-    rgba: 4294967295
---- !u!23 &98098360
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 98098356}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: fa7fdfe1352ae744498d05fc48853d07, type: 3}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &122358890
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,9 +626,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Who placed it here?
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &127517180
 BoxCollider2D:
@@ -1284,9 +1188,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Another barrel
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &324814732
 BoxCollider2D:
@@ -2908,13 +2813,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 691881500}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.559, y: 4.484, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.6734838, y: -2.816, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 98098357}
   - {fileID: 1220099437}
-  m_Father: {fileID: 1502438208}
+  m_Father: {fileID: 1808668873}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &691881502
@@ -2930,9 +2834,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: I need to buy some food
   image: {fileID: 1220099438}
-  taskID: 0
-  task: -Buy food
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: 0
+    task: Buy food
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &691881503
 BoxCollider2D:
@@ -2959,6 +2864,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.89396954, y: 0.7819302}
   m_EdgeRadius: 0
+--- !u!1 &708641196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 708641197}
+  m_Layer: 0
+  m_Name: Tasks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &708641197
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 708641196}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1386749382}
+  m_Father: {fileID: 2099877928}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &720170056
 GameObject:
   m_ObjectHideFlags: 0
@@ -3300,7 +3234,7 @@ Transform:
   m_Children:
   - {fileID: 1321713893}
   m_Father: {fileID: 1502438208}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &891828781
 MonoBehaviour:
@@ -3315,9 +3249,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Empty
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &891828782
 BoxCollider2D:
@@ -3388,9 +3323,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: I'm not remember it here
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &894276193
 BoxCollider2D:
@@ -3446,7 +3382,7 @@ Transform:
   m_Children:
   - {fileID: 927002651}
   m_Father: {fileID: 1502438208}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &911430466
 MonoBehaviour:
@@ -3461,9 +3397,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Nothing here
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &911430467
 BoxCollider2D:
@@ -3895,7 +3832,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 691881501}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1220099438
 SpriteRenderer:
@@ -4764,6 +4701,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.2, y: 4.7}
   m_EdgeRadius: 0
+--- !u!1 &1382463500
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1382463501}
+  m_Layer: 0
+  m_Name: Tasks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1382463501
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1382463500}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1659075161}
+  m_Father: {fileID: 479245611}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1386749381
 GameObject:
   m_ObjectHideFlags: 0
@@ -4793,8 +4759,8 @@ Transform:
   m_Children:
   - {fileID: 1852192172}
   - {fileID: 24745347}
-  m_Father: {fileID: 1414668315}
-  m_RootOrder: 6
+  m_Father: {fileID: 708641197}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1386749383
 MonoBehaviour:
@@ -4809,9 +4775,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Another barrel...
   image: {fileID: 24745348}
-  taskID: 1
-  task: -Barrels?
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: 1
+    task: Barrels?
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1386749384
 BoxCollider2D:
@@ -4968,7 +4935,6 @@ Transform:
   - {fileID: 1494375854}
   - {fileID: 1473620049}
   - {fileID: 1913974210}
-  - {fileID: 1386749382}
   m_Father: {fileID: 2099877928}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5016,9 +4982,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: The clothes have not dried yet
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1435776835
 BoxCollider2D:
@@ -5158,9 +5125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Interesting
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1473620051
 BoxCollider2D:
@@ -5231,9 +5199,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Who puts it here?
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1494375856
 BoxCollider2D:
@@ -5285,7 +5254,6 @@ Transform:
   m_LocalPosition: {x: 0.11448383, y: -7.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 691881501}
   - {fileID: 891828780}
   - {fileID: 911430465}
   - {fileID: 78636913}
@@ -5335,9 +5303,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Castle of the old mage
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1510171307
 BoxCollider2D:
@@ -5577,7 +5546,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 479245611}
+    m_TransformParent: {fileID: 1382463501}
     m_Modifications:
     - target: {fileID: 4099035076990470, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
       propertyPath: m_LocalPosition.x
@@ -5609,7 +5578,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4099035076990470, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
         type: 2}
@@ -5660,6 +5629,21 @@ Prefab:
       propertyPath: isTaskUpdate
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: taskInfo.isTaskUpdate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: taskInfo.taskID
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: taskInfo.task
+      value: Go to port
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
   m_IsPrefabParent: 0
@@ -5671,6 +5655,11 @@ TextMesh:
 --- !u!102 &1659075160 stripped
 TextMesh:
   m_PrefabParentObject: {fileID: 102167214235854984, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+    type: 2}
+  m_PrefabInternal: {fileID: 1659075158}
+--- !u!4 &1659075161 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4099035076990470, guid: 25f40e8726f51ee4bb1043a8db7d4181,
     type: 2}
   m_PrefabInternal: {fileID: 1659075158}
 --- !u!1 &1676757057
@@ -5924,6 +5913,35 @@ Transform:
   m_Father: {fileID: 23519580}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1808668872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1808668873}
+  m_Layer: 0
+  m_Name: Tasks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1808668873
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1808668872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 691881501}
+  m_Father: {fileID: 1100038049}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1852192171
 GameObject:
   m_ObjectHideFlags: 0
@@ -6102,9 +6120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Maybe i can sell it
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1913974212
 BoxCollider2D:
@@ -6259,9 +6278,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Mage's house
   image: {fileID: 0}
-  taskID: -1
-  task: 
-  isTaskUpdate: 0
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1977682634
 BoxCollider2D:

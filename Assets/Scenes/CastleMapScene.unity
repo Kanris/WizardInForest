@@ -118,7 +118,7 @@ Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 284515501}
+    m_TransformParent: {fileID: 1148122424}
     m_Modifications:
     - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
         type: 2}
@@ -155,7 +155,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4099035076990470, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
       propertyPath: m_RootOrder
-      value: 19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
         type: 2}
@@ -212,9 +212,19 @@ Prefab:
       propertyPath: taskID
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114161257004390776, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+        type: 2}
+      propertyPath: taskInfo.taskID
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 25f40e8726f51ee4bb1043a8db7d4181, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &23866024 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4099035076990470, guid: 25f40e8726f51ee4bb1043a8db7d4181,
+    type: 2}
+  m_PrefabInternal: {fileID: 23866023}
 --- !u!1 &49979880
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,8 +826,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Closed
   image: {fileID: 0}
-  taskID: -1
-  task: 
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &575176594
 BoxCollider2D:
@@ -1790,8 +1802,10 @@ MonoBehaviour:
   signText: Someone screams <br> -Who are you? I didn't call you <br> can't understand
     the rest
   image: {fileID: 0}
-  taskID: -1
-  task: 
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1036997505
 BoxCollider2D:
@@ -2064,6 +2078,35 @@ Transform:
   - {fileID: 1578565377}
   m_Father: {fileID: 284515501}
   m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1148122423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1148122424}
+  m_Layer: 0
+  m_Name: Tasks
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1148122424
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1148122423}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 23866024}
+  m_Father: {fileID: 284515501}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1168145596
 GameObject:
@@ -2491,8 +2534,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Food shop
   image: {fileID: 0}
-  taskID: -1
-  task: 
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1575442703
 BoxCollider2D:
@@ -2688,8 +2733,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Armory shop
   image: {fileID: 0}
-  taskID: -1
-  task: 
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &1700836625
 BoxCollider2D:
@@ -2962,8 +3009,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   signText: Flower Shop
   image: {fileID: 0}
-  taskID: -1
-  task: 
+  taskInfo:
+    taskID: -1
+    task: 
+    isTaskUpdate: 0
   audio: {fileID: 0}
 --- !u!61 &2110233366
 BoxCollider2D:

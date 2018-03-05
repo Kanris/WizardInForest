@@ -10,9 +10,8 @@ public class DialogueTrigger : MonoBehaviour {
     public TextMesh[] answerBox;
     public SpriteRenderer image;
 
-    public int taskID = -1;
-    public string objective = string.Empty;
-    public bool isTaskUpdate = false;
+    [SerializeField]
+    private TaskInfo taskInfo;
 
     private TaskManagement taskManagement;
 
@@ -33,13 +32,13 @@ public class DialogueTrigger : MonoBehaviour {
                 isAnswered = true;
                 FindObjectOfType<DialogueManager>().StartDialogue(dialogue, answerBox, image);
 
-                if (taskID >= 0 && string.IsNullOrEmpty(objective))
+                if (taskInfo.taskID >= 0 && string.IsNullOrEmpty(taskInfo.task))
                 {
                     StartCoroutine(TaskComplete());
                 } 
                 else
                 {
-                    StartCoroutine(UpdateTask(isTaskUpdate));
+                    StartCoroutine(UpdateTask(taskInfo.isTaskUpdate));
                 }
             }
 
@@ -86,12 +85,12 @@ public class DialogueTrigger : MonoBehaviour {
 
     private IEnumerator UpdateTask(bool isTaskUpdate)
     {
-        yield return taskManagement.AddTask(taskID, objective, isTaskUpdate);
+        yield return taskManagement.AddUpdateTask(taskInfo);
     }
 
     private IEnumerator TaskComplete()
     {
-        yield return taskManagement.TaskComplete(taskID);
+        yield return taskManagement.TaskComplete(taskInfo.taskID);
     }
 
 }
