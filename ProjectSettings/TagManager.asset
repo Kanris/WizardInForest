@@ -18,6 +18,7 @@ TagManager:
   - Fireball
   - Location_announcer
   - Enemy
+  - Cooldown
   layers:
   - Default
   - TransparentFX

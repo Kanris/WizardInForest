@@ -307,7 +307,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Environment\Announcer.cs" />
-    <Compile Include="Assets\Scripts\Environment\DamageFromRock.cs" />
+    <Compile Include="Assets\Scripts\Environment\Damage.cs" />
     <Compile Include="Assets\Scripts\Environment\ReadSign.cs" />
     <Compile Include="Assets\Scripts\NPC\AI\AIMovement.cs" />
     <Compile Include="Assets\Scripts\NPC\AI\AIPatrolTalk.cs" />
@@ -318,9 +318,9 @@
     <Compile Include="Assets\Scripts\NPC\Dialogue\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\NPC\Dialogue\DialogueTrigger.cs" />
     <Compile Include="Assets\Scripts\NPC\SortingLevel.cs" />
-    <Compile Include="Assets\Scripts\Player\Attack.cs" />
+    <Compile Include="Assets\Scripts\Player\Attack\Attack.cs" />
+    <Compile Include="Assets\Scripts\Player\Attack\FireballHit.cs" />
     <Compile Include="Assets\Scripts\Player\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\Player\FireballHit.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerStats.cs" />
     <Compile Include="Assets\Scripts\Player\Task\Task.cs" />

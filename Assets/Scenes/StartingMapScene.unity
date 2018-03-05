@@ -646,6 +646,11 @@ Prefab:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 114329551151215180, guid: 31791b583d8a11f49b79a5fcebac6eab,
+        type: 2}
+      propertyPath: hitSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1de03d6a3f3f73944968f26bff919b7d, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31791b583d8a11f49b79a5fcebac6eab, type: 2}
   m_IsPrefabParent: 0

@@ -6,37 +6,53 @@ using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour {
 
-    public int Health = 4;
-    public int fireballAtack = -1;
+    [SerializeField]
+    private int MaxPlayerHealth = 4;
+    [SerializeField]
+    private int CurrentPlayerHealth = 4; //player tota
+
+    public float AttackCooldown = 2.5f; //Cooldown
+    public int FireballAttackValue = -1;
 	
 	// Update is called once per frame
 	void Update () {
 
-		if (Health == 0)
+		if (CurrentPlayerHealth == 0)
         {
             StartCoroutine(EndGameScreen());
-            Health--;
+            CurrentPlayerHealth--;
         }
     }
 
+    //heal or damage player
     public void ManageHealth(int health)
     {
-        if (health < 0)
-        {
-            GetHealthImage(Health, false);
-            Health += health;
-        } 
-        else if (health > 0 && Health < 4)
-        {
-            Health += health;
-            GetHealthImage(Health, true);
+        var isHeal = health > 0;
+        var index = isHeal ? health : (health * -1);
 
-        }   
+        while (index > 0)
+        {
+            var imageIndex = isHeal ? CurrentPlayerHealth + 1 : CurrentPlayerHealth;
+            DisplayHealth(imageIndex, isHeal);
+
+            if (isHeal && CurrentPlayerHealth <= MaxPlayerHealth)
+            {
+                CurrentPlayerHealth += 1;
+            }
+            else
+            {
+                CurrentPlayerHealth -= 1;
+            }
+
+            index--;
+        }
+
     }
 
-    private void GetHealthImage(int health, bool isEnabled)
+    //show/hide health image
+    private void DisplayHealth(int health, bool isEnabled)
     {
-        var path = "Health" + Health;
+        var path = "Health" + CurrentPlayerHealth;
         var healthHUD = GameObject.Find(path);
 
         if (healthHUD != null)
@@ -45,6 +61,7 @@ public class PlayerStats : MonoBehaviour {
         }
     }
 
+    //restart game
     private IEnumerator EndGameScreen()
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().isPlayerDead = true;
