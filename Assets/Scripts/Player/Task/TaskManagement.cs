@@ -17,6 +17,7 @@ public class TaskManagement : MonoBehaviour {
     private GameObject journal; //journal gameobject
     private Text taskLog; //task log
     private GameObject buttonsGrid;
+    private List<GameObject> journalbuttons;
     private bool isJournalOpen = false; //is journal is open
     private float nextYPos = 90;
 
@@ -29,6 +30,7 @@ public class TaskManagement : MonoBehaviour {
         journal = GameObject.FindGameObjectWithTag("Journal");
         taskLog = GameObject.FindGameObjectWithTag("TaskLog").GetComponent<Text>();
         buttonsGrid = GameObject.FindGameObjectWithTag("ButtonGrid");
+        journalbuttons = new List<GameObject>();
         journal.SetActive(false);
     }
 
@@ -50,6 +52,7 @@ public class TaskManagement : MonoBehaviour {
         yield return isJournalOpen ? fader.FadeToBlack() : fader.FadeToClear();
     }
 
+    //load task log to journal
     public void LoadTaskLog(Text buttonText)
     {
         var task = buttonText.text;
@@ -95,6 +98,7 @@ public class TaskManagement : MonoBehaviour {
         }
     }
 
+    //add task button to journal
     private void AddTaskInJournal(string task)
     {
         var button = Instantiate(Resources.Load<GameObject>("Prefab/TaskButton"));
@@ -105,6 +109,9 @@ public class TaskManagement : MonoBehaviour {
         button.transform.SetParent(buttonsGrid.transform);
         button.GetComponent<RectTransform>().localPosition = new Vector3(0, nextYPos, 0);
         button.GetComponent<Button>().onClick.AddListener(() => LoadTaskLog(buttonText));
+
+        journalbuttons.Add(button);
+
         nextYPos -= 30;
     }
 
@@ -150,7 +157,23 @@ public class TaskManagement : MonoBehaviour {
             var announcerMessage = "Task <" + completedTask.GetObjective() + ">\n complete!"; //form announcer message about task completion
             ShowCurrentTasks(); //update current task HUD
 
+            DeleteJournalButton(completedTask);
+
             yield return ShowAnnouncerMessage(announcerMessage); //show announcer message
+
+        }
+    }
+
+    private void DeleteJournalButton(Task completedTask)
+    {
+        foreach (var button in journalbuttons)
+        {
+            var buttonText = button.transform.GetChild(0).GetComponent<Text>().text;
+            if (completedTask.GetLog()[0] == buttonText)
+            {
+                button.SetActive(false);
+                break;
+            }
         }
     }
 
