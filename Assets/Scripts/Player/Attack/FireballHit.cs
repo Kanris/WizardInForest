@@ -4,28 +4,30 @@ using UnityEngine;
 
 public class FireballHit : MonoBehaviour {
 
-    private Vector3 whereToAttack = Vector3.zero;
-    private Rigidbody2D fireballBody;
+    private Vector3 whereToAttack = Vector3.zero; //attack vector
+    private Rigidbody2D fireballBody; //fireball body
 
     private void Start()
     {
         fireballBody = GetComponent<Rigidbody2D>(); //get fireball body 
-        fireballBody.transform.position = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().transform.position;
-        whereToAttack = Animate();
+        fireballBody.transform.position = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>().transform.position; //place fireball on player
+        whereToAttack = Animate(); //animate fireball
     }
 
     private void Update()
     {
-        fireballBody.transform.position += whereToAttack * Time.deltaTime;
+        fireballBody.transform.position += whereToAttack * Time.deltaTime; //move fireball
     }
-
+    
+    //fireball animation
     private Vector3 Animate()
     {
-        var wherePlayerLook = GetWherePlayerLook();
+        var wherePlayerLook = GetWherePlayerLook(); //get where is player looking
 
-        var fireballAnimator = GetComponent<Animator>();
+        var fireballAnimator = GetComponent<Animator>(); //get fireball animator
 
-        fireballAnimator.SetFloat("posX", wherePlayerLook.x);
+        //set fireball animation
+        fireballAnimator.SetFloat("posX", wherePlayerLook.x); 
         fireballAnimator.SetFloat("posY", wherePlayerLook.y);
         fireballAnimator.SetBool("isHit", false);
 

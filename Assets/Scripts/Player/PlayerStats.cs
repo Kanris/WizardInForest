@@ -10,6 +10,8 @@ public class PlayerStats : MonoBehaviour {
     private int MaxPlayerHealth = 4;
     [SerializeField]
     private int CurrentPlayerHealth = 4; //player tota
+
+    public float AttackCooldown = 2.5f; //Cooldown
     public int FireballAttackValue = -1;
 	
 	// Update is called once per frame
