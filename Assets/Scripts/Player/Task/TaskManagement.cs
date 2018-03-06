@@ -36,7 +36,7 @@ public class TaskManagement : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J)) //if pressed j open/close journal
+        if (Input.GetKeyDown(KeyCode.J) && !PauseMenu.isGamePaused) //if pressed j open/close journal and game is not paused
         {
             StartCoroutine(OpenCloseJournal()); //open/close journal
         }

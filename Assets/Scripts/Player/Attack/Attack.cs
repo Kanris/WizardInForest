@@ -24,15 +24,18 @@ public class Attack : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 		
-        if (Input.GetKeyDown(KeyCode.Space) && !isInCooldown) //player press attack button
+        if (!PauseMenu.isGamePaused) //if game is not paused
         {
-            if (!FindObjectOfType<DialogueManager>().isDialogueInProcess) //if player is not in dialogue
+            if (Input.GetKeyDown(KeyCode.Space) && !isInCooldown) //player press attack button
             {
-                Instantiate(Resources.Load<GameObject>("Prefab/Fireball")); //create fireball
-                timerValue = FindObjectOfType<PlayerStats>().AttackCooldown; //get player attack cooldown
-                isInCooldown = true; //player can't create another fireball
+                if (!FindObjectOfType<DialogueManager>().isDialogueInProcess) //if player is not in dialogue
+                {
+                    Instantiate(Resources.Load<GameObject>("Prefab/Fireball")); //create fireball
+                    timerValue = FindObjectOfType<PlayerStats>().AttackCooldown; //get player attack cooldown
+                    isInCooldown = true; //player can't create another fireball
 
-                StartCoroutine(StartCooldown()); //start countdown
+                    StartCoroutine(StartCooldown()); //start countdown
+                }
             }
         }
 	}

@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (!isPlayerDead)
+        if (!isPlayerDead && !PauseMenu.isGamePaused) //if playes is not dead and game is not paused
         {
             var movmentVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
