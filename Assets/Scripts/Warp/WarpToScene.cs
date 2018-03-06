@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WarpToScene : MonoBehaviour {
 
@@ -15,7 +16,14 @@ public class WarpToScene : MonoBehaviour {
     [SerializeField]
     private float y = 0f; //warp position y
 
-    private static bool isWarping = false; //is player warping
+    public static bool isWarping = false; //is player warping
+
+    private LoadingScene loadingScene;
+
+    private void Start()
+    {
+        loadingScene = FindObjectOfType<LoadingScene>();
+    }
 
     //warp triggered
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
@@ -24,18 +32,12 @@ public class WarpToScene : MonoBehaviour {
         {
             if (!isWarping) //player is not warping
             {
-                isWarping = true; //player is warping
-
-                ScreenFader screenFader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>(); //find fader
-
-                yield return screenFader.FadeToBlack(); //fade screen to black
-
                 SaveGameObject(); //save needed gameobject
 
-                SceneManager.LoadScene(sceneName); //load new scene
-                isWarping = false; //player warped
+                //SceneManager.LoadScene(sceneName); //load new scene
+                yield return loadingScene.LoadingSceneAsync(sceneName);
 
-                yield return screenFader.FadeToClear(); //fade screen to clear
+                isWarping = false;
             }
         }
     }
