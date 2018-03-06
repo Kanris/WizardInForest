@@ -177,8 +177,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 93, y: -23}
-  m_SizeDelta: {x: 145, y: 200}
+  m_AnchoredPosition: {x: 93, y: 2.8999925}
+  m_SizeDelta: {x: 145, y: 251.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &365138788
 MonoBehaviour:
@@ -1247,7 +1247,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 098b52be276df4348b66f640c0b5c6e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ae058df4c6b806d4d9fa101926343284, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1467,7 +1467,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0.0035171509, y: -0.004339874}
   m_SpriteTilingProperty:
@@ -2445,8 +2445,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -89, y: -21}
-  m_SizeDelta: {x: 145, y: 200}
+  m_AnchoredPosition: {x: -89, y: 3.9}
+  m_SizeDelta: {x: 145, y: 249.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1516035771
 MonoBehaviour:
