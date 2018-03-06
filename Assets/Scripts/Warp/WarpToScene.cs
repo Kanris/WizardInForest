@@ -33,10 +33,9 @@ public class WarpToScene : MonoBehaviour {
                 SaveGameObject(); //save needed gameobject
 
                 SceneManager.LoadScene(sceneName); //load new scene
+                isWarping = false; //player warped
 
                 yield return screenFader.FadeToClear(); //fade screen to clear
-                 
-                isWarping = false; //player warped
             }
         }
     }
