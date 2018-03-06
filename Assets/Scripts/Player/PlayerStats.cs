@@ -72,14 +72,14 @@ public class PlayerStats : MonoBehaviour {
         var screenFader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>();
         yield return screenFader.FadeToBlack();
 
+        yield return new WaitForSeconds(3f);
+
         Destroy(GameObject.FindGameObjectWithTag("Player"));
         Destroy(GameObject.FindGameObjectWithTag("HUD"));
         Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
+        Destroy(GameObject.FindGameObjectWithTag("EventSystem"));
 
-        SceneManager.LoadScene("Limbo");
-
-        yield return screenFader.FadeToClear();
-
+        SceneManager.LoadScene("Menu");
     }
 
 }

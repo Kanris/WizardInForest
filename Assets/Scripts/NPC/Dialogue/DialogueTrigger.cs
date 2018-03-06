@@ -38,7 +38,7 @@ public class DialogueTrigger : MonoBehaviour {
                 } 
                 else
                 {
-                    StartCoroutine(UpdateTask(taskInfo.isTaskUpdate));
+                    StartCoroutine(UpdateTask());
                 }
             }
 
@@ -83,9 +83,9 @@ public class DialogueTrigger : MonoBehaviour {
         hudButton.enabled = enabled;
     }
 
-    private IEnumerator UpdateTask(bool isTaskUpdate)
+    private IEnumerator UpdateTask()
     {
-        yield return taskManagement.AddUpdateTask(taskInfo);
+        yield return taskManagement.AddUpdateTask(taskInfo, dialogue.name, dialogue.sentences);
     }
 
     private IEnumerator TaskComplete()

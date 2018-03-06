@@ -61,7 +61,7 @@ public class ReadSign : MonoBehaviour {
             if (image.enabled) //if task is not read
             {
                 image.enabled = false; //hide task image
-                yield return taskManagement.AddUpdateTask(taskInfo); //add task to HUD
+                yield return taskManagement.AddUpdateTask(taskInfo, "Player", new string[] { signText }); //add task to HUD
             }
         }
     }

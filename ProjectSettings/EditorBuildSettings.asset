@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 373f59be22c7d7f43b9da0df71c1c13a
+  - enabled: 1
     path: Assets/Scenes/Limbo.unity
     guid: ab61263f0ce560046a84538bdbbf6520
   - enabled: 1

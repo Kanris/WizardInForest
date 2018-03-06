@@ -27,47 +27,57 @@ public class TaskManagement : MonoBehaviour {
         txtAnnouncer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>(); //get hud announcer
         asAnnouncer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<AudioSource>(); //get hud audio source
 
-        journal = GameObject.FindGameObjectWithTag("Journal");
-        taskLog = GameObject.FindGameObjectWithTag("TaskLog").GetComponent<Text>();
-        buttonsGrid = GameObject.FindGameObjectWithTag("ButtonGrid");
-        journalbuttons = new List<GameObject>();
-        journal.SetActive(false);
+        journal = GameObject.FindGameObjectWithTag("Journal"); //get journal gameobject
+        taskLog = GameObject.FindGameObjectWithTag("TaskLog").GetComponent<Text>(); //get task log
+        buttonsGrid = GameObject.FindGameObjectWithTag("ButtonGrid"); //get grid for buttons
+        journalbuttons = new List<GameObject>(); //list of added buttons
+        journal.SetActive(false); //disable journal
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.J)) //if pressed j open/close journal
         {
-            StartCoroutine(OpenCloseJournal());
+            StartCoroutine(OpenCloseJournal()); //open/close journal
         }
     }
 
+    //open or close journal
     private IEnumerator OpenCloseJournal()
     {
-        isJournalOpen = !isJournalOpen;
+        isJournalOpen = !isJournalOpen; //if journal is close - open; if journal is open - close
         journal.SetActive(isJournalOpen);
 
-        var fader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>();
+        var fader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>(); //get fader
 
-        yield return isJournalOpen ? fader.FadeToBlack() : fader.FadeToClear();
+        yield return isJournalOpen ? fader.FadeToBlack() : fader.FadeToClear(); //if journal is opening - fade to black; if journal is closing - fade to clear
     }
 
     //load task log to journal
     public void LoadTaskLog(Text buttonText)
     {
-        var task = buttonText.text;
+        var taskText = buttonText.text; //get button text
+        var tasks = currentTasks.Find(x => x.GetLog().Contains(taskText)); //find log in current task
 
-        var neededTask = currentTasks.Find(x => x.GetLog().Contains(task));
+        var sentences = tasks.GetSentences();
 
-        taskLog.text = string.Empty;
-        foreach (var item in neededTask.GetLog())
+        taskLog.text = string.Empty; //empty task log
+
+        foreach (var sentence in sentences)
+        {
+            taskLog.text += sentence + "\n";
+        }
+
+        taskLog.text += "\nTask:\n";
+
+        foreach (var item in tasks.GetLog()) //show log in task log
         {
             taskLog.text += item + "\n";
         }
     }
 
     //add/update task
-    public IEnumerator AddUpdateTask(TaskInfo taskInfo)
+    public IEnumerator AddUpdateTask(TaskInfo taskInfo, string name, string[] sentences)
     {
         var indexInCompletedTask = IsTaskAdded(completedTasks, taskInfo.taskID, taskInfo.task); //search task in completed task list
 
@@ -79,13 +89,13 @@ public class TaskManagement : MonoBehaviour {
             if (index >= 0) //if task is already in the current task list
             {
                 announcerMessage = "Task <" + currentTasks[index].GetObjective() + ">updated!"; //form update announcer message
-                currentTasks[index].UpdateObjective(taskInfo.task); //updated existed task
+                currentTasks[index].UpdateObjective(taskInfo.task, name, sentences); //updated existed task
 
                 ShowCurrentTasks(); //updated current task list in the HUD
             }
             else if (index == -1 && !taskInfo.isTaskUpdate) //if task is not in the current task list
             {
-                var newTask = new Task(taskInfo.taskID, taskInfo.task); //form new task
+                var newTask = new Task(taskInfo.taskID, taskInfo.task, name, sentences); //form new task
                 currentTasks.Add(newTask); //add new task to the current list task
 
                 announcerMessage = "Task added!"; //form add announcer message
@@ -103,16 +113,16 @@ public class TaskManagement : MonoBehaviour {
     {
         var button = Instantiate(Resources.Load<GameObject>("Prefab/TaskButton"));
 
-        var buttonText = button.transform.GetChild(0).GetComponent<Text>();
-        buttonText.text = task;
+        var buttonText = button.transform.GetChild(0).GetComponent<Text>(); //get button text
+        buttonText.text = task; //set button text with task 
 
-        button.transform.SetParent(buttonsGrid.transform);
-        button.GetComponent<RectTransform>().localPosition = new Vector3(0, nextYPos, 0);
-        button.GetComponent<Button>().onClick.AddListener(() => LoadTaskLog(buttonText));
+        button.transform.SetParent(buttonsGrid.transform); //add button to buttonsGrid
+        button.GetComponent<RectTransform>().localPosition = new Vector3(0, nextYPos, 0); //set button position
+        button.GetComponent<Button>().onClick.AddListener(() => LoadTaskLog(buttonText)); //add on click listener
 
-        journalbuttons.Add(button);
+        journalbuttons.Add(button); //add button to list
 
-        nextYPos -= 30;
+        nextYPos -= 30; //next button position
     }
 
     //show announcer message for player
@@ -163,15 +173,15 @@ public class TaskManagement : MonoBehaviour {
 
         }
     }
-
+    //delete button from grid
     private void DeleteJournalButton(Task completedTask)
     {
-        foreach (var button in journalbuttons)
+        foreach (var button in journalbuttons) //find button in list
         {
-            var buttonText = button.transform.GetChild(0).GetComponent<Text>().text;
-            if (completedTask.GetLog()[0] == buttonText)
+            var buttonText = button.transform.GetChild(0).GetComponent<Text>().text; //get button text
+            if (completedTask.GetLog()[0] == buttonText) //if button text is equal to completed task
             {
-                button.SetActive(false);
+                Destroy(button); //disable button
                 break;
             }
         }

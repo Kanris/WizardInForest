@@ -7,15 +7,23 @@ public class Task {
 
     private int id; //task id
     private string task; //current task
+    private List<string> sentences;
     private List<string> log; //task log
 
-    public Task(int id, string objective)
+    public Task(int id, string objective, string name, string[] sentence)
     {
-        this.id = id;
-        this.task = objective;
+        this.id = id; //add task id
+        this.task = objective; //add current task objective
 
-        this.log = new List<string>();
-        this.log.Add(objective);
+        this.log = new List<string>(); 
+        this.log.Add(objective); //add task to the log
+
+        this.sentences = new List<string>();
+        this.sentences.Add(name + ":");
+        foreach (var item in sentence)
+            this.sentences.Add(item); //add dialogue sentence to the log
+
+        this.sentences.Add("------"); //add seperator
     }
 
     public void UpdateID(int id)
@@ -28,9 +36,16 @@ public class Task {
         return id;
     }
 
-    public void UpdateObjective(string objective)
+    public void UpdateObjective(string objective, string name, string[] sentence)
     {
         log.Add(objective);
+
+        this.sentences.Add(name + ":");
+
+        foreach (var item in sentence)
+            this.sentences.Add(item);
+
+        this.sentences.Add("------");
 
         this.task = objective;
     }
@@ -43,5 +58,10 @@ public class Task {
     public List<string> GetLog()
     {
         return log;
+    }
+
+    public List<string> GetSentences()
+    {
+        return sentences;
     }
 }
