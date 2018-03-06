@@ -50,6 +50,8 @@ public class TaskManagement : MonoBehaviour {
 
         var fader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>(); //get fader
 
+        taskLog.text = string.Empty; //clear task log
+
         yield return isJournalOpen ? fader.FadeToBlack() : fader.FadeToClear(); //if journal is opening - fade to black; if journal is closing - fade to clear
     }
 
