@@ -6,43 +6,59 @@ using UnityEngine.SceneManagement;
 public class WarpToScene : MonoBehaviour {
 
     [SerializeField]
-    private string sceneName;
+    private string sceneName; //warp destination
     [SerializeField]
-    private AudioClip audio;
+    private AudioClip audio; //new scene audio
 
     [SerializeField]
-    private float x = 0f;
+    private float x = 0f; //warp position x
     [SerializeField]
-    private float y = 0f;
+    private float y = 0f; //warp position y
 
+    private static bool isWarping = false; //is player warping
 
+    //warp triggered
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && collision.isTrigger)
+        if (collision.CompareTag("Player") && collision.isTrigger) //player triggered
         {
-            ScreenFader screenFader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>();
+            if (!isWarping) //player is not warping
+            {
+                isWarping = true; //player is warping
 
-            yield return screenFader.FadeToBlack();
+                ScreenFader screenFader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>(); //find fader
 
-            var player = GameObject.FindGameObjectWithTag("Player");
-            var camera = GameObject.FindGameObjectWithTag("MainCamera");
-            var eventSystem = GameObject.FindGameObjectWithTag("EventSystem");
+                yield return screenFader.FadeToBlack(); //fade screen to black
 
-            DontDestroyOnLoad(player);
-            DontDestroyOnLoad(camera);
-            DontDestroyOnLoad(eventSystem);
-            DontDestroyOnLoad(GameObject.FindGameObjectWithTag("HUD"));
+                SaveGameObject(); //save needed gameobject
 
-            MovePlayerToPosition(player, camera);
+                SceneManager.LoadScene(sceneName); //load new scene
 
-            ChangeSceneMusic(camera);
-
-            SceneManager.LoadScene(sceneName);
-
-            yield return screenFader.FadeToClear();
+                yield return screenFader.FadeToClear(); //fade screen to clear
+                 
+                isWarping = false; //player warped
+            }
         }
     }
 
+    //save gameobject to another scene
+    private void SaveGameObject()
+    {
+        var player = GameObject.FindGameObjectWithTag("Player"); //find player
+        var camera = GameObject.FindGameObjectWithTag("MainCamera"); //find camera
+        var eventSystem = GameObject.FindGameObjectWithTag("EventSystem"); //find event system
+
+        DontDestroyOnLoad(player); //save player
+        DontDestroyOnLoad(camera); //save camera
+        DontDestroyOnLoad(eventSystem); //save event system
+        DontDestroyOnLoad(GameObject.FindGameObjectWithTag("HUD")); //save hud
+
+        MovePlayerToPosition(player, camera); //move player and camera to new position
+
+        ChangeSceneMusic(camera); //change music
+    }
+
+    //move player and camera to new position
     private void MovePlayerToPosition(GameObject player, GameObject camera)
     {
         if (player != null)
@@ -53,6 +69,7 @@ public class WarpToScene : MonoBehaviour {
         }
     }
 
+    //change music
     private void ChangeSceneMusic(GameObject camera)
     {
         if (camera != null)
