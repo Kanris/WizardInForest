@@ -7,38 +7,39 @@ using UnityEngine.SceneManagement;
 public class LoadingScene : MonoBehaviour {
 
     [SerializeField]
-    private GameObject loadingScene;
+    private GameObject loadingScene; //loading canvas
     [SerializeField]
-    private Slider loadingProgress;
+    private Slider loadingProgress; //loading slider
 
-    private AsyncOperation operation;
+    private AsyncOperation operation; //load operation
 
     private void Update()
     {
-        if (operation != null)
+        if (operation != null) //if operation is not null
         {
-            if (operation.isDone && WarpToScene.isWarping)
+            if (operation.isDone && WarpToScene.isWarping) //if operation is done and player warped
             {
-                Debug.Log("Hide loading scene");
+                loadingScene.SetActive(false); //hide loading canbas
 
-                loadingScene.SetActive(false);
-
-                WarpToScene.isWarping = false;
+                WarpToScene.isWarping = false; //player is warped
             }
         }
     }
 
+    //loading scene async
     public IEnumerator LoadingSceneAsync(string sceneName)
     {
-        WarpToScene.isWarping = true;
-        operation = SceneManager.LoadSceneAsync(sceneName);
+        WarpToScene.isWarping = true; //player is warping
+        operation = SceneManager.LoadSceneAsync(sceneName); //start loading new scene
 
-        loadingScene.SetActive(true);
+        loadingScene.SetActive(true); //active loading canvas
 
+        //while scene loading
         while (!operation.isDone)
         {
             var progress = Mathf.Clamp01(operation.progress / 0.9f);
 
+            //show loading progress
             loadingProgress.value = progress;
 
             yield return null;

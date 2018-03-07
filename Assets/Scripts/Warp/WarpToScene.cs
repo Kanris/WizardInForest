@@ -18,11 +18,11 @@ public class WarpToScene : MonoBehaviour {
 
     public static bool isWarping = false; //is player warping
 
-    private LoadingScene loadingScene;
+    private LoadingScene loadingScene; //loading canvas
 
     private void Start()
     {
-        loadingScene = FindObjectOfType<LoadingScene>();
+        loadingScene = FindObjectOfType<LoadingScene>(); //find loading canvas
     }
 
     //warp triggered
@@ -35,9 +35,7 @@ public class WarpToScene : MonoBehaviour {
                 SaveGameObject(); //save needed gameobject
 
                 //SceneManager.LoadScene(sceneName); //load new scene
-                yield return loadingScene.LoadingSceneAsync(sceneName);
-
-                isWarping = false;
+                yield return loadingScene.LoadingSceneAsync(sceneName); //start async loading scene and show loading canvas
             }
         }
     }
