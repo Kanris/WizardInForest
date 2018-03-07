@@ -24,30 +24,34 @@ public class PlayerMovement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (!isPlayerDead && !PauseMenu.isGamePaused) //if playes is not dead and game is not paused
+        if (!WarpToScene.isWarping && !ScreenFader.isFading) //if player not warping
         {
-            var movmentVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-
-            if (movmentVector != Vector2.zero)
+            if (!isPlayerDead && !PauseMenu.isGamePaused) //if playes is not dead and game is not paused
             {
-                anim.SetBool("isWalking", true);
-                anim.SetFloat("inputX", movmentVector.x);
-                anim.SetFloat("inputY", movmentVector.y);
+                var movmentVector = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+                if (movmentVector != Vector2.zero)
+                {
+                    anim.SetBool("isWalking", true);
+                    anim.SetFloat("inputX", movmentVector.x);
+                    anim.SetFloat("inputY", movmentVector.y);
+                }
+                else
+                {
+                    anim.SetBool("isWalking", false);
+                }
+
+                FootStepsSound();
+                rBody.MovePosition(rBody.position + movmentVector * Time.deltaTime);
             }
             else
             {
                 anim.SetBool("isWalking", false);
             }
-            
-            FootStepsSound();
-            rBody.MovePosition(rBody.position + movmentVector * Time.deltaTime);
-        }
-        else
+        } else
         {
             anim.SetBool("isWalking", false);
         }
-
-
 	}
 
     void FootStepsSound()

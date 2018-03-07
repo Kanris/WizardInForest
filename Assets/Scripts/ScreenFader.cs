@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScreenFader : MonoBehaviour {
 
     private Animator animator; //hud animator
-    private bool isFading = false; //is animation in progress
+    public static bool isFading = false; //is animation in progress
 
 	// Use this for initialization
 	void Start () {

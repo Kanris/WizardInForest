@@ -19,8 +19,7 @@ public class LoadingScene : MonoBehaviour {
         {
             if (operation.isDone && WarpToScene.isWarping) //if operation is done and player warped
             {
-                loadingScene.SetActive(false); //hide loading canbas
-
+                loadingScene.SetActive(false); //hide loading canvas
                 WarpToScene.isWarping = false; //player is warped
             }
         }
