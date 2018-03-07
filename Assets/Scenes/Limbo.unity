@@ -1184,6 +1184,7 @@ GameObject:
   - component: {fileID: 730147587}
   - component: {fileID: 730147586}
   - component: {fileID: 730147585}
+  - component: {fileID: 730147588}
   m_Layer: 0
   m_Name: Cooldown
   m_TagString: Cooldown
@@ -1277,6 +1278,23 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &730147588
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 730147583}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fdb2d80734e1a90489a90f9f3d5dfbb6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &735433836
 GameObject:
   m_ObjectHideFlags: 0
@@ -1853,7 +1871,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 5
-  m_Sprite: {fileID: 21300002, guid: ca7fa390f2bc62f4db5b52aba80fe4e2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ca7fa390f2bc62f4db5b52aba80fe4e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
