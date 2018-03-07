@@ -7,8 +7,9 @@ public class PauseMenu : MonoBehaviour {
 
     public static bool isGamePaused = false;
     public GameObject pauseMenuUI;
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
 		
         if (Input.GetKeyDown(KeyCode.Escape)) //escape button pressed
         {
@@ -48,7 +49,7 @@ public class PauseMenu : MonoBehaviour {
     public void LoadMenu()
     {
         Time.timeScale = 1f; //unfreeze game
-
+        isGamePaused = false;
         //destroy all DontDestroyOnLoad
         Destroy(GameObject.FindGameObjectWithTag("Player"));
         Destroy(GameObject.FindGameObjectWithTag("HUD"));
