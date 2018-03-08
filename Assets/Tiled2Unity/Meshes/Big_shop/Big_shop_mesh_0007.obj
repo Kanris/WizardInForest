@@ -1,0 +1,32 @@
+﻿# Tiled2Unity generated file. Do not modify by hand.
+# Wavefront file for 'Big_shop_mesh_0007.obj'
+
+# Vertices (Count = 8)
+v -2.56 -3.2 0
+v -2.88 -3.2 0
+v -2.88 -2.88 0
+v -2.56 -2.88 0
+v -3.84 -3.2 0
+v -4.16 -3.2 0
+v -4.16 -2.88 0
+v -3.84 -2.88 0
+
+# Texture cooridinates (Count = 7)
+vt 0.6666667 0.5
+vt 1 0.5
+vt 1 1
+vt 0.6666667 1
+vt 0.3333333 0
+vt 0.6666667 0
+vt 0.3333333 0.5
+
+# Normal
+vn 0 0 -1
+
+# Mesh description
+g Big_shop_mesh_0007
+
+# Faces
+f 1/1/1 2/2/1 3/3/1 4/4/1
+f 5/5/1 6/6/1 7/1/1 8/7/1
+
