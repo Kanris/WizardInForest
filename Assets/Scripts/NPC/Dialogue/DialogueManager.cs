@@ -9,20 +9,18 @@ public class DialogueManager : MonoBehaviour {
 
     private Queue<string> sentences;
     public bool isDialogueInProcess = false;
-    private Image playerButton;
     private TextMesh[] textMesh = new TextMesh[2];
 
 	// Use this for initialization
 	void Start () {
         sentences = new Queue<string>();
-        playerButton = GameObject.FindGameObjectWithTag("Player_Buttons").GetComponent<Image>();
     }
 
     private void Update()
     {
         if (isDialogueInProcess)
         {
-            ShowPlayerInteractionButton("button_Space");
+            FindObjectOfType<PlayerInteractionButtons>().ShowInteractionButton(PlayerInteractionButtons.Buttons.Space);
         }
 
         if (isDialogueInProcess && Input.GetKeyDown("space"))
@@ -80,18 +78,8 @@ public class DialogueManager : MonoBehaviour {
         if (npcDialogueImage != null) npcDialogueImage.enabled = true;
 
         isDialogueInProcess = false;
-        playerButton.enabled = false;
 
-        ShowPlayerInteractionButton("button_E");
-    }
-
-    private void ShowPlayerInteractionButton(string button)
-    {
-        playerButton.enabled = true;
-        var path = "Button/" + button;
-        var image = Resources.Load<Sprite>(path);
-
-        playerButton.sprite = image;
+        FindObjectOfType<PlayerInteractionButtons>().ShowInteractionButton(PlayerInteractionButtons.Buttons.E);
     }
 
 }

@@ -12,13 +12,6 @@ public class Trade : MonoBehaviour {
     [TextArea(2, 10)]
     private string sentence;
 
-    private Image buttonImage;
-
-    private void Start()
-    {
-        buttonImage = GameObject.FindGameObjectWithTag("Player_Buttons").GetComponent<Image>(); //get hud buttons
-    }
-
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && !PauseMenu.isGamePaused)
@@ -29,36 +22,34 @@ public class Trade : MonoBehaviour {
 
     private void AnswerToPlayer(string sentence)
     {
-        traderAnswer[0].text = traderAnswer[1].text = sentence;
+        traderAnswer[0].text = traderAnswer[1].text = sentence; //displaye trader message
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
-        ShowInteractionButton(true, collision);
+    { 
+        ShowInteractionButton(true, collision); //show interaction button
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        ShowInteractionButton(false, collision);
+        ShowInteractionButton(false, collision); //hide all interactions with trader
     }
 
     private void ShowInteractionButton(bool show, Collider2D collision)
     {
-        if (collision.CompareTag("Player") && collision.isTrigger)
+        if (collision.CompareTag("Player") && collision.isTrigger) //if player is near trader
         {
+            var hudInteractionButton = FindObjectOfType<PlayerInteractionButtons>();
+
             if (show)
             {
-                var path = "Button/button_E";
-                var imageE = Resources.Load<Sprite>(path);
-
-                buttonImage.sprite = imageE;
+                hudInteractionButton.ShowInteractionButton(PlayerInteractionButtons.Buttons.E); //show button e
             }
             else
             {
-                AnswerToPlayer(string.Empty);
+                hudInteractionButton.HideInteractionButton(); //hide interaction button
+                AnswerToPlayer(string.Empty); //clear message dialoge
             }
-
-            buttonImage.enabled = show;
         }
     }
 }
