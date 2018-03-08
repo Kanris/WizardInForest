@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class ReadSign : MonoBehaviour {
 
-    private TextMesh[] displayText = new TextMesh[2]; //answer boxes
     [TextArea]
     public string signText = string.Empty; //text to show
 
@@ -22,9 +21,6 @@ public class ReadSign : MonoBehaviour {
         taskManagement = FindObjectOfType<TaskManagement>(); //get taskmanagement
         announcer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>(); //get hud announcer
 
-        displayText[0] = GameObject.FindGameObjectsWithTag("Player_Answer")[0].GetComponent<TextMesh>(); //get answer boxes
-        displayText[1] = GameObject.FindGameObjectsWithTag("Player_Answer")[1].GetComponent<TextMesh>();
-
         if (taskInfo.task != string.Empty && 
             (taskManagement.IsTaskAdded(taskManagement.currentTasks, taskInfo.taskID) >= 0 ||
             taskManagement.IsTaskAdded(taskManagement.completedTasks, taskInfo.taskID) >= 0)) //if task added/completed
@@ -39,16 +35,10 @@ public class ReadSign : MonoBehaviour {
         {
             if (Input.GetKeyDown(KeyCode.E)) //if player pressed E button
             {
-                PlayerAnswer(); //display message
+                FindObjectOfType<PlayerAnswer>().DisplayPlayerAnswer(signText); //display message
                 StartCoroutine(ReadTask()); //show task
             }
         }
-    }
-
-    //display message
-    private void PlayerAnswer()
-    {
-        displayText[0].text = displayText[1].text = signText;
     }
 
     //Task is read
@@ -78,7 +68,8 @@ public class ReadSign : MonoBehaviour {
         if (collision.CompareTag("Player") && collision.isTrigger) //if player leave sign
         {
             FindObjectOfType<PlayerInteractionButtons>().HideInteractionButton(); //hide interaction buttons
-            displayText[0].text = displayText[1].text = string.Empty; //clear answer boxes
+            FindObjectOfType<PlayerAnswer>().HidePlayerAnswer(); //hide player answer
+
             isPlayerNearSign = false;
         } 
     }
