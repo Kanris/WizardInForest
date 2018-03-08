@@ -30,9 +30,12 @@ public class Trade : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNear && !PauseMenu.isGamePaused)
+        if (isPlayerNear)
         {
-            DisplaySentence(sentence); //displaye trader message
+            if (Input.GetKeyDown(KeyCode.E) && !PauseMenu.isGamePaused)
+            {
+                DisplaySentence(sentence); //displaye trader message
+            }
         }
     }
 

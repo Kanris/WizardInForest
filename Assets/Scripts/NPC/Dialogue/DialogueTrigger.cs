@@ -25,24 +25,27 @@ public class DialogueTrigger : MonoBehaviour {
 
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && isPlayerNearby)
+        if (isPlayerNearby)
         {
-            if (!ReferenceEquals(dialogue, null))
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                isAnswered = true;
-                FindObjectOfType<DialogueManager>().StartDialogue(dialogue, answerBox, image);
+                if (!ReferenceEquals(dialogue, null))
+                {
+                    isAnswered = true;
+                    FindObjectOfType<DialogueManager>().StartDialogue(dialogue, answerBox, image);
 
-                if (taskInfo.taskID >= 0 && string.IsNullOrEmpty(taskInfo.task))
-                {
-                    StartCoroutine(TaskComplete());
-                } 
-                else
-                {
-                    StartCoroutine(UpdateTask());
+                    if (taskInfo.taskID >= 0 && string.IsNullOrEmpty(taskInfo.task))
+                    {
+                        StartCoroutine(TaskComplete());
+                    }
+                    else
+                    {
+                        StartCoroutine(UpdateTask());
+                    }
                 }
-            }
 
-            if (isAnswered) image.enabled = false;
+                if (isAnswered) image.enabled = false;
+            }
         }
     }
 
