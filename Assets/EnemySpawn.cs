@@ -28,7 +28,7 @@ public class EnemySpawn : MonoBehaviour {
         var enemy = Instantiate(GetEnemy(enemyName));
 
         enemy.transform.SetParent(gameObject.transform, false);
-        enemy.transform.position = gameObject.transform.position;
+        enemy.transform.position = gameObject.transform.position + GetRandPosition();
 
         currentEnemiesNumber++;
     }
@@ -38,5 +38,13 @@ public class EnemySpawn : MonoBehaviour {
         var enemy = Resources.Load<GameObject>("Prefab/" + enemyName);
 
         return enemy;
+    }
+
+    private Vector3 GetRandPosition()
+    {
+        var x = Random.Range(-1, 1);
+        var y = Random.Range(-1, 1);
+
+        return new Vector3(x, y);
     }
 }
