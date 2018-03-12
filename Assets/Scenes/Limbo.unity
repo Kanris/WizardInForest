@@ -1941,7 +1941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxPlayerHealth: 4
   CurrentPlayerHealth: 4
-  AttackCooldown: 2.5
+  AttackCooldown: 1
   FireballAttackValue: -1
 --- !u!114 &798597951
 MonoBehaviour:
