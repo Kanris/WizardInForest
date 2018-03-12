@@ -552,7 +552,8 @@ Prefab:
       propertyPath: hitSound
       value: 
       objectReference: {fileID: 8300000, guid: 1de03d6a3f3f73944968f26bff919b7d, type: 3}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 58608384409657788, guid: 31791b583d8a11f49b79a5fcebac6eab, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 31791b583d8a11f49b79a5fcebac6eab, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &124164224 stripped
@@ -580,6 +581,21 @@ MonoBehaviour:
   healthBar:
   - {fileID: 1618642567}
   - {fileID: 517620880}
+--- !u!58 &124164227
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124164225}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.03}
+  serializedVersion: 2
+  m_Radius: 0.11
 --- !u!1 &127517177
 GameObject:
   m_ObjectHideFlags: 0
@@ -999,9 +1015,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98eaf5a9639768942b0d230b82a70150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text:
-  - {fileID: 192132100}
-  - {fileID: 920183893}
   phrases:
     phrasesPatrol:
     - "What a day what \n a lovely day!"
