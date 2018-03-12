@@ -488,6 +488,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxEnemiesNumber: 1
+  SpawnTime: 2
+  enemies:
+  - Bat
+  - Bee
+  - Ghost
 --- !u!1 &122358890
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,6 +585,11 @@ Prefab:
     - target: {fileID: 4082660876285408, guid: 31791b583d8a11f49b79a5fcebac6eab, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114161816137075356, guid: 31791b583d8a11f49b79a5fcebac6eab,
+        type: 2}
+      propertyPath: speed
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31791b583d8a11f49b79a5fcebac6eab, type: 2}

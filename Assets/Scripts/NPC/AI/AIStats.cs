@@ -12,6 +12,8 @@ public class AIStats : MonoBehaviour {
     [SerializeField]
     private TextMesh[] healthBar;
 
+    public float speed = 10f;
+
     // Use this for initialization
     void Start () {
         DisplayHealth();

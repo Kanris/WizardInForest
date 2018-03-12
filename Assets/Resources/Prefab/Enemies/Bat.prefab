@@ -334,6 +334,7 @@ MonoBehaviour:
   healthBar:
   - {fileID: 102908415684311346}
   - {fileID: 102273874883379524}
+  speed: 0.7
 --- !u!114 &114433090316012618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,7 +359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f16f63c39b57324a9810158dce9b622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.4
   isAttacking: 0
   isNearPlayer: 0
 --- !u!212 &212292591971104068

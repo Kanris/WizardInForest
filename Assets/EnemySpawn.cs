@@ -9,7 +9,7 @@ public class EnemySpawn : MonoBehaviour {
     [SerializeField]
     private float SpawnTime = 2f; //enemies spawn time
     [SerializeField]
-    private string[] enemies = new string[] { "Bat", "Bee" };
+    private string[] enemies = new string[] { "Bat", "Bee", "Ghost" };
 	
 	// Update is called once per frame
 	void Update () {
@@ -39,7 +39,7 @@ public class EnemySpawn : MonoBehaviour {
     //get enemy prefab
     private GameObject GetEnemy(string enemyName)
     {
-        var enemy = Resources.Load<GameObject>("Prefab/" + enemyName);
+        var enemy = Resources.Load<GameObject>("Prefab/Enemies/" + enemyName);
 
         return enemy;
     }

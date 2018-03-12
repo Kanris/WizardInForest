@@ -7,15 +7,14 @@ public class RandomMovement : MonoBehaviour {
     private Rigidbody2D aiBody; //npc body
     private Animator aiAnimator; //npc animation
 
-    [SerializeField]
-    private float speed = 0.4f; //movement speed
-
     private bool isWaiting = false; //is npc stoped
     private bool isMoveTimeIsOver = false; //is npc has to stop
     private Vector2 whereToMove = Vector2.zero; //where to move
 
     public bool isAttacking = false;
     public bool isNearPlayer = false;
+
+    private float speed;
 
 	// Use this for initialization
 	void Start () {
@@ -24,6 +23,8 @@ public class RandomMovement : MonoBehaviour {
 
         whereToMove = GetNextRandomPoint(); //get where to move
         StartCoroutine(Wait()); //start move logic
+
+        speed = gameObject.transform.GetChild(0).GetComponent<AIStats>().speed;
     }
 	
 	// Update is called once per frame
