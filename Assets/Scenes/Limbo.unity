@@ -2646,6 +2646,7 @@ GameObject:
   - component: {fileID: 1110504097}
   - component: {fileID: 1110504096}
   - component: {fileID: 1110504095}
+  - component: {fileID: 1110504098}
   m_Layer: 0
   m_Name: Player's answer
   m_TagString: Player_Answer
@@ -2739,6 +2740,23 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!95 &1110504098
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1110504093}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f48902621fbe0084dbd6a0f34b3c97bc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &1144038027
 GameObject:
   m_ObjectHideFlags: 0
