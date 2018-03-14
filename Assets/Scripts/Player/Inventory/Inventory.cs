@@ -53,7 +53,7 @@ public class Inventory : MonoBehaviour {
         list.ForEach(x => x.SetActive(isActive));
     }
 
-    private IEnumerator AddInventory(string item)
+    public IEnumerator AddInventory(string item)
     {
         if (list.Count < list.Capacity)
         {
