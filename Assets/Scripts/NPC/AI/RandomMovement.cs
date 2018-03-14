@@ -24,7 +24,7 @@ public class RandomMovement : MonoBehaviour {
         whereToMove = GetNextRandomPoint(); //get where to move
         StartCoroutine(Wait()); //start move logic
 
-        speed = gameObject.transform.GetChild(0).GetComponent<AIStats>().speed;
+        speed = gameObject.transform.GetChild(0).GetComponent<AIStats>().speed; //get ai speed stat
     }
 	
 	// Update is called once per frame

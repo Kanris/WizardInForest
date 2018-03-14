@@ -23,6 +23,7 @@ TagManager:
   - TaskLog
   - EventSystem
   - ButtonGrid
+  - Inventory
   layers:
   - Default
   - TransparentFX
