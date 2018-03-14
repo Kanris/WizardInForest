@@ -52,7 +52,8 @@ public class PlayerStats : MonoBehaviour {
     //show/hide health image
     private void DisplayHealth(int health, bool isEnabled)
     {
-        var path = "Health" + CurrentPlayerHealth;
+        var path = "Health" + health;
+        Debug.Log(path);
         var healthHUD = GameObject.Find(path);
 
         if (healthHUD != null)
