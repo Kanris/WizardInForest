@@ -30,7 +30,7 @@ public class PlayerStats : MonoBehaviour {
         var isHeal = health > 0;
         var index = isHeal ? health : (health * -1);
 
-        while (index > 0 && CurrentPlayerHealth < MaxPlayerHealth)
+        while (index > 0 && CurrentPlayerHealth <= MaxPlayerHealth)
         {
             var imageIndex = isHeal ? CurrentPlayerHealth + 1 : CurrentPlayerHealth;
             DisplayHealth(imageIndex, isHeal);
@@ -53,7 +53,7 @@ public class PlayerStats : MonoBehaviour {
     private void DisplayHealth(int health, bool isEnabled)
     {
         var path = "Health" + health;
-        Debug.Log(path);
+
         var healthHUD = GameObject.Find(path);
 
         if (healthHUD != null)

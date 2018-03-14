@@ -9,6 +9,8 @@ public class Inventory : MonoBehaviour {
     private bool isActive = false;
 
     private List<GameObject> list;
+    private Dictionary<Vector3, bool> freePositionsInInventory;
+
 
 	// Use this for initialization
 	void Start () {
@@ -16,8 +18,15 @@ public class Inventory : MonoBehaviour {
         inventory = GameObject.FindGameObjectWithTag("Inventory");
         inventory.SetActive(isActive);
 
-        list = new List<GameObject>(9);
+        list = new List<GameObject>(3);
 
+        freePositionsInInventory = new Dictionary<Vector3, bool>();
+        freePositionsInInventory.Add(new Vector3(-36, 1), true);
+        freePositionsInInventory.Add(new Vector3(2, 1), true);
+        freePositionsInInventory.Add(new Vector3(38, 1), true);
+
+        StartCoroutine(AddInventory("HealthPotion"));
+        StartCoroutine(AddInventory("HealthPotion"));
         StartCoroutine(AddInventory("HealthPotion"));
     }
 	
@@ -46,11 +55,11 @@ public class Inventory : MonoBehaviour {
 
     private IEnumerator AddInventory(string item)
     {
-        if (list.Count + 1 < list.Capacity)
+        if (list.Count < list.Capacity)
         {
             var newItem = Instantiate(Resources.Load<GameObject>("Prefab/Inventory/" + item));
             newItem.transform.SetParent(inventory.transform);
-            newItem.GetComponent<RectTransform>().localPosition = new Vector3(-36, 1);
+            newItem.GetComponent<RectTransform>().localPosition = GetFreePosition();
 
             list.Add(newItem);
         }
@@ -74,5 +83,23 @@ public class Inventory : MonoBehaviour {
                 list.RemoveAt(index);
             }
         }
+    }
+
+    private Vector3 GetFreePosition()
+    {
+        var freePosition = Vector3.zero;
+
+        foreach (var item in freePositionsInInventory)
+        {
+            if (item.Value)
+            {
+                freePosition = item.Key;
+                freePositionsInInventory[item.Key] = false;
+                break;
+            }
+
+        }
+
+        return freePosition;
     }
 }
