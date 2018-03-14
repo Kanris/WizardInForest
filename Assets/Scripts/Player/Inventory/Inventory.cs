@@ -50,7 +50,7 @@ public class Inventory : MonoBehaviour {
         {
             var newItem = Instantiate(Resources.Load<GameObject>("Prefab/Inventory/" + item));
             newItem.transform.SetParent(inventory.transform);
-            newItem.GetComponent<RectTransform>().localPosition = new Vector3(-31, 34, 0);
+            newItem.GetComponent<RectTransform>().localPosition = new Vector3(-36, 1);
 
             list.Add(newItem);
         }
@@ -61,6 +61,18 @@ public class Inventory : MonoBehaviour {
             yield return new WaitForSeconds(1f);
 
             GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>().text = string.Empty;
+        }
+    }
+
+    public void ItemUse()
+    {
+        for(int index = 0; index < list.Count; index++)
+        {
+            if (!list[index].active)
+            {
+                Destroy(list[index]);
+                list.RemoveAt(index);
+            }
         }
     }
 }

@@ -30,7 +30,7 @@ public class PlayerStats : MonoBehaviour {
         var isHeal = health > 0;
         var index = isHeal ? health : (health * -1);
 
-        while (index > 0)
+        while (index > 0 && CurrentPlayerHealth < MaxPlayerHealth)
         {
             var imageIndex = isHeal ? CurrentPlayerHealth + 1 : CurrentPlayerHealth;
             DisplayHealth(imageIndex, isHeal);
