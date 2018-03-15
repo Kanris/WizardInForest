@@ -21,6 +21,15 @@ public class TaskManagement : MonoBehaviour {
     private bool isJournalOpen = false; //is journal is open
     private float nextYPos = 90;
 
+    public bool IsJournalOpen
+    {
+        get
+        {
+            return isJournalOpen;
+        }
+    }
+
+
     // Use this for initialization
     void Start () {
         txtObjectives = GameObject.FindGameObjectWithTag("HUD_Objectives").GetComponent<Text>(); //get hud objectvies
@@ -38,15 +47,20 @@ public class TaskManagement : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.J) && !PauseMenu.isGamePaused) //if pressed j open/close journal and game is not paused
         {
-            StartCoroutine(OpenCloseJournal()); //open/close journal
+            if (FindObjectOfType<Inventory>().IsInventoryOpen)
+                FindObjectOfType<Inventory>().InventoryVisibility();
+
+            StartCoroutine(JournalVisibility()); //open/close journal
         }
     }
 
     //open or close journal
-    private IEnumerator OpenCloseJournal()
+    public IEnumerator JournalVisibility()
     {
         isJournalOpen = !isJournalOpen; //if journal is close - open; if journal is open - close
         journal.SetActive(isJournalOpen);
+
+        Debug.Log(isJournalOpen);
 
         var fader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>(); //get fader
 

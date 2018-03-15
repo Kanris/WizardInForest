@@ -10,8 +10,8 @@ public class HealthPotion : MonoBehaviour, IItem {
     public void Use()
     {
         FindObjectOfType<PlayerStats>().ManageHealth(HealthCount);
-        gameObject.SetActive(false);
-        FindObjectOfType<Inventory>().ItemUse();
+        FindObjectOfType<Inventory>().ItemUse(gameObject.GetComponent<RectTransform>().localPosition);
+        Destroy(gameObject);
     }
 
 

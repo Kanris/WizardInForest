@@ -5,20 +5,27 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour {
 
-    private GameObject inventory;
-    private bool isActive = false;
+    private GameObject inventory; //inventory object
+    private Dictionary<Vector3, bool> freePositionsInInventory; //inventories position
+    private int maxItemCount = 3; //max items in inventory
+    private int itemsCount = 3; //current items count in inventory
 
-    private List<GameObject> list;
-    private Dictionary<Vector3, bool> freePositionsInInventory;
+    private static bool isInventoryOpen = false; //is inventory opened
+
+    public bool IsInventoryOpen
+    {
+        get
+        {
+            return isInventoryOpen;
+        }
+    }
 
 
 	// Use this for initialization
 	void Start () {
 
         inventory = GameObject.FindGameObjectWithTag("Inventory");
-        inventory.SetActive(isActive);
-
-        list = new List<GameObject>(3);
+        inventory.SetActive(isInventoryOpen);
 
         freePositionsInInventory = new Dictionary<Vector3, bool>();
         freePositionsInInventory.Add(new Vector3(-36, 1), true);
@@ -39,29 +46,28 @@ public class Inventory : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.I))
                 {
+                    if (FindObjectOfType<TaskManagement>().IsJournalOpen)
+                        StartCoroutine(FindObjectOfType<TaskManagement>().JournalVisibility());
+
                     InventoryVisibility();
                 }
             }
         }
 	}
 
-    private void InventoryVisibility()
+    public void InventoryVisibility()
     {
-        isActive = !isActive;
-        inventory.SetActive(isActive);
-
-        list.ForEach(x => x.SetActive(isActive));
+        isInventoryOpen = !isInventoryOpen;
+        inventory.SetActive(isInventoryOpen);
     }
 
     public IEnumerator AddInventory(string item)
     {
-        if (list.Count < list.Capacity)
+        if (itemsCount <= maxItemCount)
         {
             var newItem = Instantiate(Resources.Load<GameObject>("Prefab/Inventory/" + item));
             newItem.transform.SetParent(inventory.transform);
             newItem.GetComponent<RectTransform>().localPosition = GetFreePosition();
-
-            list.Add(newItem);
         }
         else
         {
@@ -73,16 +79,9 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-    public void ItemUse()
+    public void ItemUse(Vector3 position)
     {
-        for(int index = 0; index < list.Count; index++)
-        {
-            if (!list[index].active)
-            {
-                Destroy(list[index]);
-                list.RemoveAt(index);
-            }
-        }
+        freePositionsInInventory[position] = true;
     }
 
     private Vector3 GetFreePosition()
