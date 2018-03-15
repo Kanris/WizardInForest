@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitSound: {fileID: 8300000, guid: 1de03d6a3f3f73944968f26bff919b7d, type: 3}
-  attackSpeed: 1.5
+  attackSpeed: 2
   attackValue: -1
   isNearPlayer: 0
 --- !u!114 &114098346034444462

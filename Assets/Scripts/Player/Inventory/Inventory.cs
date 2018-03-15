@@ -24,16 +24,15 @@ public class Inventory : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-        inventory = GameObject.FindGameObjectWithTag("Inventory");
-        inventory.SetActive(isInventoryOpen);
+        inventory = GameObject.FindGameObjectWithTag("Inventory"); //get inventory object
+        inventory.SetActive(isInventoryOpen); //hide inventory
 
-        freePositionsInInventory = new Dictionary<Vector3, bool>();
+        freePositionsInInventory = new Dictionary<Vector3, bool>(); //create inventory position
         freePositionsInInventory.Add(new Vector3(-36, 1), true);
         freePositionsInInventory.Add(new Vector3(2, 1), true);
         freePositionsInInventory.Add(new Vector3(38, 1), true);
 
-        StartCoroutine(AddInventory("HealthPotion"));
-        StartCoroutine(AddInventory("HealthPotion"));
+        //add health potions in inventory
         StartCoroutine(AddInventory("HealthPotion"));
     }
 	
@@ -44,34 +43,39 @@ public class Inventory : MonoBehaviour {
         {
             if (!PauseMenu.isGamePaused) //game is not paused
             {
-                if (Input.GetKeyDown(KeyCode.I))
+                if (Input.GetKeyDown(KeyCode.I)) //if I button clicked
                 {
-                    if (FindObjectOfType<TaskManagement>().IsJournalOpen)
-                        StartCoroutine(FindObjectOfType<TaskManagement>().JournalVisibility());
+                    if (FindObjectOfType<TaskManagement>().IsJournalOpen) //if journal is open
+                        StartCoroutine(FindObjectOfType<TaskManagement>().JournalVisibility()); //close journal
 
-                    InventoryVisibility();
+                    InventoryVisibility(); //show inventory
                 }
             }
         }
 	}
 
+    //show or hide inventory
     public void InventoryVisibility()
     {
         isInventoryOpen = !isInventoryOpen;
         inventory.SetActive(isInventoryOpen);
     }
 
+    //add new item to the inventory
     public IEnumerator AddInventory(string item)
     {
+        //if inventory is not full
         if (itemsCount <= maxItemCount)
         {
+            //search prefab in inventory
             var newItem = Instantiate(Resources.Load<GameObject>("Prefab/Inventory/" + item));
             newItem.transform.SetParent(inventory.transform);
-            newItem.GetComponent<RectTransform>().localPosition = GetFreePosition();
+            newItem.GetComponent<RectTransform>().localPosition = GetFreePosition(); //add item to the free position
         }
-        else
+        else //inventory is full
         {
-            GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>().text = "Inventory is full";
+            //show message for 1 second that inventory is full
+            GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>().text = "Inventory is full"; 
 
             yield return new WaitForSeconds(1f);
 
@@ -79,18 +83,20 @@ public class Inventory : MonoBehaviour {
         }
     }
 
+    //item used
     public void ItemUse(Vector3 position)
     {
-        freePositionsInInventory[position] = true;
+        freePositionsInInventory[position] = true; //free position
     }
 
+    //serch for free position in inventory
     private Vector3 GetFreePosition()
     {
         var freePosition = Vector3.zero;
 
         foreach (var item in freePositionsInInventory)
         {
-            if (item.Value)
+            if (item.Value) //if position is free - return it
             {
                 freePosition = item.Key;
                 freePositionsInInventory[item.Key] = false;

@@ -60,8 +60,6 @@ public class TaskManagement : MonoBehaviour {
         isJournalOpen = !isJournalOpen; //if journal is close - open; if journal is open - close
         journal.SetActive(isJournalOpen);
 
-        Debug.Log(isJournalOpen);
-
         var fader = GameObject.FindGameObjectWithTag("Fader").GetComponent<ScreenFader>(); //get fader
 
         taskLog.text = string.Empty; //clear task log
