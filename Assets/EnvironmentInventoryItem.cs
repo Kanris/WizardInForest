@@ -7,16 +7,21 @@ public class EnvironmentInventoryItem : MonoBehaviour {
     [SerializeField]
     private string ItemName;
 
+    private bool isPlayerNearItem = false;
+
     private void Update()
     {
         if (!WarpToScene.isWarping && !ScreenFader.isFading) //if player not warping
         {
             if (!PauseMenu.isGamePaused) //game is not paused
             {
-                if (Input.GetKeyDown(KeyCode.E))
+                if (isPlayerNearItem)
                 {
-                    StartCoroutine(FindObjectOfType<Inventory>().AddInventory(ItemName));
-                    Destroy(gameObject);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        StartCoroutine(FindObjectOfType<Inventory>().AddInventory(ItemName));
+                        Destroy(gameObject);
+                    }
                 }
             }
         }
@@ -26,6 +31,7 @@ public class EnvironmentInventoryItem : MonoBehaviour {
     {
         if (collision.CompareTag("Player") && collision.isTrigger)
         {
+            isPlayerNearItem = true;
             FindObjectOfType<PlayerInteractionButtons>().ShowInteractionButton(PlayerInteractionButtons.Buttons.E);
 
         }
@@ -35,6 +41,7 @@ public class EnvironmentInventoryItem : MonoBehaviour {
     {
         if (collision.CompareTag("Player") && collision.isTrigger)
         {
+            isPlayerNearItem = false;
             FindObjectOfType<PlayerInteractionButtons>().HideInteractionButton();
         }
     }
