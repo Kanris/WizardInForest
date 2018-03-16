@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour {
 
+    [SerializeField]
     private GameObject inventory; //inventory object
     private Dictionary<Vector3, bool> freePositionsInInventory; //inventories position
     private int maxItemCount = 3; //max items in inventory
@@ -23,9 +24,6 @@ public class Inventory : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-        inventory = GameObject.FindGameObjectWithTag("Inventory"); //get inventory object
-        inventory.SetActive(isInventoryOpen); //hide inventory
 
         freePositionsInInventory = new Dictionary<Vector3, bool>(); //create inventory position
         freePositionsInInventory.Add(new Vector3(-36, 1), true);
