@@ -14,9 +14,13 @@ public class TaskManagement : MonoBehaviour {
 
     private AudioSource asAnnouncer; //task sound
 
+    [SerializeField]
     private GameObject journal; //journal gameobject
+    [SerializeField]
     private Text taskLog; //task log
+    [SerializeField]
     private GameObject buttonsGrid;
+
     private List<GameObject> journalbuttons;
     private bool isJournalOpen = false; //is journal is open
     private float nextYPos = 90;
@@ -36,11 +40,7 @@ public class TaskManagement : MonoBehaviour {
         txtAnnouncer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>(); //get hud announcer
         asAnnouncer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<AudioSource>(); //get hud audio source
 
-        journal = GameObject.FindGameObjectWithTag("Journal"); //get journal gameobject
-        taskLog = GameObject.FindGameObjectWithTag("TaskLog").GetComponent<Text>(); //get task log
-        buttonsGrid = GameObject.FindGameObjectWithTag("ButtonGrid"); //get grid for buttons
         journalbuttons = new List<GameObject>(); //list of added buttons
-        journal.SetActive(false); //disable journal
     }
 
     private void Update()

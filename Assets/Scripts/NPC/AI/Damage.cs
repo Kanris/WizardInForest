@@ -56,6 +56,7 @@ public class Damage : MonoBehaviour {
         while (isNearPlayer) //while player in enemy attack range
         {
             yield return new WaitForSeconds(attackSpeed); 
+
             if (isNearPlayer) //if player still is near enemy
             {
                 playerHealthHud.ManageHealth(attackValue); //hit player
