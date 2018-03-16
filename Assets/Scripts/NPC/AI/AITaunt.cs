@@ -25,7 +25,7 @@ public class AITaunt : MonoBehaviour {
 
     private IEnumerator OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && collision.isTrigger)
+        if (collision.CompareTag("Player") && collision.isTrigger && !aiMovement.isAttacking)
         {
             aiMovement.isAttacking = true;
             yield return ShowAlert();

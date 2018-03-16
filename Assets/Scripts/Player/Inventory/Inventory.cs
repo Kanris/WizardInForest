@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour {
 
     [SerializeField]
     private GameObject inventory; //inventory object
+
     private Dictionary<Vector3, bool> freePositionsInInventory; //inventories position
     private int maxItemCount = 3; //max items in inventory
     private int itemsCount = 3; //current items count in inventory

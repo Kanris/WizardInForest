@@ -12,7 +12,7 @@ public class ScreenFader : MonoBehaviour {
 
         animator = GetComponent<Animator>(); //get hud animator
 
-	}
+    }
 
     //fade from black to clear
     public IEnumerator FadeToClear()
