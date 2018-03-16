@@ -71,9 +71,9 @@ public class FireballHit : MonoBehaviour {
                 FindObjectOfType<PlayerStats>().FireballAttackValue);
 
             collision.gameObject.transform.parent.gameObject.GetComponent<RandomMovement>().isAttacking = true;
-            Debug.Log(new Vector3(whereToAttack.x / 2, whereToAttack.y / 2));
+ 
             collision.transform.GetComponentInParent<Rigidbody2D>().transform.position +=
-                new Vector3(whereToAttack.x / 2, whereToAttack.y / 2);
+                new Vector3(whereToAttack.x / 3, whereToAttack.y / 3);
         }
     }
 
