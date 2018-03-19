@@ -12,12 +12,7 @@ public class Announcer : MonoBehaviour {
     {
         if (collision.CompareTag("Player") && collision.isTrigger)
         {
-            var hudAnnouncer = GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>();
-            hudAnnouncer.text = announcerText;
-
-            yield return new WaitForSeconds(2f);
-
-            hudAnnouncer.text = string.Empty;
+            yield return FindObjectOfType<HUDAnnouncer>().DisplayAnnounce(announcerText, 2f);
 
             Destroy(this);
         }

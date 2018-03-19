@@ -10,7 +10,7 @@ public class Inventory : MonoBehaviour {
 
     private Dictionary<Vector3, bool> freePositionsInInventory; //inventories position
     private int maxItemCount = 3; //max items in inventory
-    private int itemsCount = 3; //current items count in inventory
+    private int itemsCount = 1; //current items count in inventory
 
     private static bool isInventoryOpen = false; //is inventory opened
 
@@ -61,32 +61,45 @@ public class Inventory : MonoBehaviour {
     }
 
     //add new item to the inventory
-    public IEnumerator AddInventory(string item)
+    public IEnumerator AddInventory(string item, GameObject itemGO = null)
     {
         //if inventory is not full
         if (itemsCount <= maxItemCount)
         {
+
+            if (itemGO)
+            {
+                itemGO.GetComponentInChildren<SpriteRenderer>().enabled = false;
+                itemGO.GetComponent<EnvironmentInventoryItem>().enabled = false;
+                itemGO.GetComponent<BoxCollider2D>().enabled = false;
+            }
+
             //search prefab in inventory
             var newItem = Instantiate(Resources.Load<GameObject>("Prefab/Inventory/" + item));
             newItem.transform.SetParent(inventory.transform);
             newItem.GetComponent<RectTransform>().localPosition = GetFreePosition(); //add item to the free position
-            
+
+            ++itemsCount;
+
+            string itemAddString = "Add " + item + " to inventory";
+
+            yield return FindObjectOfType<HUDAnnouncer>().DisplayAnnounce(itemAddString, 1f);
+
+            Destroy(itemGO);
+
         }
         else //inventory is full
         {
-            //show message for 1 second that inventory is full
-            GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>().text = "Inventory is full"; 
-
-            yield return new WaitForSeconds(1f);
-
-            GameObject.FindGameObjectWithTag("HUD_Announcer").GetComponent<Text>().text = string.Empty;
+            yield return FindObjectOfType<HUDAnnouncer>().DisplayAnnounce("Inventory is full", 2f);
         }
+
     }
 
     //item used
     public void ItemUse(Vector3 position)
     {
         freePositionsInInventory[position] = true; //free position
+        --itemsCount;
     }
 
     //serch for free position in inventory

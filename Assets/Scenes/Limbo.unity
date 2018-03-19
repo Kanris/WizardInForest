@@ -832,6 +832,7 @@ GameObject:
   - component: {fileID: 424209775}
   - component: {fileID: 424209774}
   - component: {fileID: 424209773}
+  - component: {fileID: 424209778}
   m_Layer: 5
   m_Name: Announcer
   m_TagString: HUD_Announcer
@@ -1004,6 +1005,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 424209771}
+--- !u!114 &424209778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 424209771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8369520d2bf347b46acb93a693dfaf0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &437506192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,7 +1986,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: ca7fa390f2bc62f4db5b52aba80fe4e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3607,6 +3619,10 @@ Prefab:
     - target: {fileID: 4042041218611896, guid: a0fc7fc6bae96a448a34f5042dea2ffc, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706028413331876, guid: a0fc7fc6bae96a448a34f5042dea2ffc, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a0fc7fc6bae96a448a34f5042dea2ffc, type: 2}

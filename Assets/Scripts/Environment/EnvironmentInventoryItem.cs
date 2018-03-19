@@ -19,8 +19,7 @@ public class EnvironmentInventoryItem : MonoBehaviour {
                 {
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        StartCoroutine(FindObjectOfType<Inventory>().AddInventory(ItemName));
-                        Destroy(gameObject);
+                        StartCoroutine(FindObjectOfType<Inventory>().AddInventory(ItemName, gameObject));
                     }
                 }
             }
