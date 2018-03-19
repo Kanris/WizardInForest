@@ -70,6 +70,7 @@ public class Inventory : MonoBehaviour {
             var newItem = Instantiate(Resources.Load<GameObject>("Prefab/Inventory/" + item));
             newItem.transform.SetParent(inventory.transform);
             newItem.GetComponent<RectTransform>().localPosition = GetFreePosition(); //add item to the free position
+            
         }
         else //inventory is full
         {
