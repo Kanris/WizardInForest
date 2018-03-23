@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -47,9 +48,11 @@ public class RandomMovement : MonoBehaviour {
             }
 
             var movementVector = WhereToMove(whereToMove); //where to move
+            var previousePosition = new Vector3(whereToMove.x, whereToMove.y) - aiBody.transform.position;
+
             aiBody.MovePosition(movementVector); //move enemy
            
-            SetAnimation(movementVector.x, movementVector.y); //set animation
+            SetAnimation(previousePosition.x, previousePosition.y); //set animation
         }
 
         if (!isWaiting && !isAttacking) //if npc is not waiting
@@ -75,7 +78,6 @@ public class RandomMovement : MonoBehaviour {
     point, speed * Time.deltaTime); 
 
         return movementVector;
-
     }
 
     //get next movement position
@@ -97,9 +99,9 @@ public class RandomMovement : MonoBehaviour {
 
     //activate npc animation
     private void SetAnimation(float posX, float posY)
-    {
-        var x = GetAnimation(Mathf.Floor(posX));
-        var y = GetAnimation(Mathf.Floor(posY));
+    { 
+        var x = (float) Math.Floor(posX);
+        var y = (float)Math.Floor(posY);
 
         aiAnimator.SetFloat("posX", x);
         aiAnimator.SetFloat("posY", y);
@@ -144,7 +146,7 @@ public class RandomMovement : MonoBehaviour {
     //get random value in range
     private float GetRandomValue(float min = -1f, float max = 1f)
     {
-        var rand = Random.Range(min, max);
+        var rand = UnityEngine.Random.Range(min, max);
 
         return rand;
     }
