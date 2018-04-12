@@ -12,6 +12,10 @@ public class Inventory : MonoBehaviour {
     private int maxItemCount = 3; //max items in inventory
     private int itemsCount = 1; //current items count in inventory
 
+    private int coinsAmount = 100;
+    [SerializeField]
+    private Text textCoinsAmount;
+
     private static bool isInventoryOpen = false; //is inventory opened
 
     public bool IsInventoryOpen
@@ -30,6 +34,8 @@ public class Inventory : MonoBehaviour {
         freePositionsInInventory.Add(new Vector3(-36, 1), true);
         freePositionsInInventory.Add(new Vector3(2, 1), true);
         freePositionsInInventory.Add(new Vector3(38, 1), true);
+
+        AddCoins(100);
 
         //add health potions in inventory
         StartCoroutine(AddInventory("HealthPotion"));
@@ -100,6 +106,24 @@ public class Inventory : MonoBehaviour {
     {
         freePositionsInInventory[position] = true; //free position
         --itemsCount;
+    }
+
+    public void AddCoins(int amount)
+    {
+        if (amount > 0)
+        {
+            coinsAmount += amount;
+            textCoinsAmount.text = coinsAmount.ToString();
+        }
+    }
+
+    public void SpendCoins(int amount)
+    {
+        if (amount < 0 && coinsAmount >= amount)
+        {
+            coinsAmount += amount;
+            textCoinsAmount.text = coinsAmount.ToString();
+        }
     }
 
     //serch for free position in inventory

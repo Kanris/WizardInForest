@@ -24,6 +24,7 @@ TagManager:
   - EventSystem
   - ButtonGrid
   - Inventory
+  - GoldAmount
   layers:
   - Default
   - TransparentFX
