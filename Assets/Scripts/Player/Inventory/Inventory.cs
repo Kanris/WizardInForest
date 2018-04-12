@@ -117,12 +117,15 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-    public void SpendCoins(int amount)
+    public void SpendCoins(int amount, string item = null)
     {
         if (amount < 0 && coinsAmount >= amount)
         {
             coinsAmount += amount;
             textCoinsAmount.text = coinsAmount.ToString();
+
+            if (!string.IsNullOrEmpty(item))
+                AddInventory(item);
         }
     }
 
