@@ -10,8 +10,17 @@ public class BuyItem : MonoBehaviour {
     [SerializeField]
     private string Item = "Empty";
 
+    [SerializeField]
+    private GameObject inventory;
+
     public void Buy()
     {
+        Debug.Log("click");
         FindObjectOfType<Inventory>().SpendCoins(Price, Item);
+    }
+
+    private void OnMouseDown()
+    {
+        Buy();
     }
 }
