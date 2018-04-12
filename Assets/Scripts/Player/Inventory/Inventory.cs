@@ -88,7 +88,6 @@ public class Inventory : MonoBehaviour {
             ++itemsCount;
 
             string itemAddString = "Add " + item + " to inventory";
-
             yield return FindObjectOfType<HUDAnnouncer>().DisplayAnnounce(itemAddString, 1f);
 
             Destroy(itemGO);
@@ -117,15 +116,14 @@ public class Inventory : MonoBehaviour {
         }
     }
 
-    public void SpendCoins(int amount, string item = null)
+    public void SpendCoins(int amount, string item)
     {
         if (amount < 0 && coinsAmount >= amount)
         {
             coinsAmount += amount;
             textCoinsAmount.text = coinsAmount.ToString();
-
-            if (!string.IsNullOrEmpty(item))
-                AddInventory(item);
+            
+            StartCoroutine(AddInventory(item));
         }
     }
 
