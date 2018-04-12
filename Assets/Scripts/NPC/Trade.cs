@@ -13,6 +13,9 @@ public class Trade : MonoBehaviour {
 
     private bool isPlayerNear = false;
 
+    [SerializeField]
+    private GameObject inventory;
+
     private void Start()
     {
         InitializeAnswerTextMeshes();
@@ -35,6 +38,7 @@ public class Trade : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E) && !PauseMenu.isGamePaused)
             {
                 DisplaySentence(sentence); //displaye trader message
+                ShowHideInventory();
             }
         }
     }
@@ -52,6 +56,11 @@ public class Trade : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D collision)
     {
         InteractionWithPlayer(false, collision);
+    }
+
+    private void ShowHideInventory()
+    {
+        inventory.SetActive(!inventory.activeSelf);
     }
 
     private void InteractionWithPlayer(bool show, Collider2D collision)
