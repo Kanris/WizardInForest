@@ -118,7 +118,7 @@ public class Inventory : MonoBehaviour {
 
     public void SpendCoins(int amount, string item)
     {
-        if (amount < 0 && coinsAmount >= amount)
+        if (amount < 0 && coinsAmount >= (-1 * amount))
         {
             coinsAmount += amount;
             textCoinsAmount.text = coinsAmount.ToString();
