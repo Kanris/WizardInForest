@@ -78,6 +78,7 @@ public class Trade : MonoBehaviour {
             {
                 hudInteractionButton.HideInteractionButton(); //hide interaction button
                 DisplaySentence(string.Empty);
+				ShowHideInventory ();
             }
         }
     }
