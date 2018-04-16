@@ -124,9 +124,13 @@ public class Inventory : MonoBehaviour {
 				textCoinsAmount.text = coinsAmount.ToString ();
 
 				StartCoroutine (AddInventory (item));
+			} else {
+				StartCoroutine(FindObjectOfType<HUDAnnouncer>()
+					.DisplayAnnounce("Can't buy - " + item + "\nHaven't enough coins.", 2f));
 			}
 		} else {
-			StartCoroutine(FindObjectOfType<HUDAnnouncer>().DisplayAnnounce("Inventory is full", 2f));
+			StartCoroutine(FindObjectOfType<HUDAnnouncer>()
+				.DisplayAnnounce("Can't buy - " + item + "\nInventory is full.", 2f));
 		}
     }
 
