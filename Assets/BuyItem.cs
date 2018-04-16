@@ -15,7 +15,6 @@ public class BuyItem : MonoBehaviour {
 
     public void Buy()
     {
-        Debug.Log("click");
         FindObjectOfType<Inventory>().SpendCoins(Price, Item);
     }
 

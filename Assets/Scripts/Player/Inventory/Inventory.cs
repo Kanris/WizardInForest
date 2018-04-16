@@ -70,7 +70,7 @@ public class Inventory : MonoBehaviour {
     public IEnumerator AddInventory(string item, GameObject itemGO = null)
     {
         //if inventory is not full
-        if (itemsCount <= maxItemCount)
+		if (!IsInventoryFull())
         {
 
             if (itemGO)
@@ -118,6 +118,7 @@ public class Inventory : MonoBehaviour {
 
     public void SpendCoins(int amount, string item)
     {
+		
         if (amount < 0 && coinsAmount >= (-1 * amount))
         {
             coinsAmount += amount;
@@ -126,6 +127,11 @@ public class Inventory : MonoBehaviour {
             StartCoroutine(AddInventory(item));
         }
     }
+
+	private bool IsInventoryFull()
+	{
+		return !(itemsCount <= maxItemCount);
+	}
 
     //serch for free position in inventory
     private Vector3 GetFreePosition()
