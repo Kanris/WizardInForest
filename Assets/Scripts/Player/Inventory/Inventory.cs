@@ -12,7 +12,7 @@ public class Inventory : MonoBehaviour {
     private int maxItemCount = 3; //max items in inventory
     private int itemsCount = 1; //current items count in inventory
 
-    private int coinsAmount = 100;
+    private int coinsAmount = 400;
     [SerializeField]
     private Text textCoinsAmount;
 
@@ -118,14 +118,16 @@ public class Inventory : MonoBehaviour {
 
     public void SpendCoins(int amount, string item)
     {
-		
-        if (amount < 0 && coinsAmount >= (-1 * amount))
-        {
-            coinsAmount += amount;
-            textCoinsAmount.text = coinsAmount.ToString();
-            
-            StartCoroutine(AddInventory(item));
-        }
+		if (!IsInventoryFull()) {
+			if (amount < 0 && coinsAmount >= (-1 * amount)) {
+				coinsAmount += amount;
+				textCoinsAmount.text = coinsAmount.ToString ();
+
+				StartCoroutine (AddInventory (item));
+			}
+		} else {
+			StartCoroutine(FindObjectOfType<HUDAnnouncer>().DisplayAnnounce("Inventory is full", 2f));
+		}
     }
 
 	private bool IsInventoryFull()
